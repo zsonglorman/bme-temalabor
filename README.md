@@ -1,2 +1,2 @@
-# bme-temalabor
-BME Témalabor
+# BME Témalabor
+Ez a repó a Témalaborhoz készült.
