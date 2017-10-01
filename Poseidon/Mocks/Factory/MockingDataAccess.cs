@@ -4,14 +4,14 @@ using Interfaces;
 
 namespace Mocks.Factory
 {
-    class MockingDataAccess : DataAccessMode, Interfaces.ISubject
+    class MockingDataAccess : DataAccessMode, ISubject
     {
-        public List<Subject> GetSubjects()
+        public override List<Subject> GetSubjects()
         {
             return new List<Subject>()
             {
-                new Subject(1, "A programozás alapjai 1", "BMEVIEEAA00", 7, 1, "Dr. Czirkos Zoltán"),
-                new Subject(2, "Bevezetés a számításelméletbe 1", "BMEVISZAA00", 4, 1, "Dr. Szeszlér Dávid")
+                new Subject(1, "Teszt tárgy", "ABC123", 4, 1, "Teszt Elek"),
+                new Subject(2, "Elgondolkodtató tárgy", "DEF456", 5, 2, "Prof János")
             };
         }
     }

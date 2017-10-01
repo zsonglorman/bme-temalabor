@@ -2,11 +2,12 @@
 {
     public static class DataAccessFactory
     {
-        private static bool _mocking = true;
+        // TODO should be made private
+        public static bool Mocking = true;
 
         public static DataAccessMode GetDataAccess()
         {
-            if (_mocking)
+            if (Mocking)
             {
                 return new MockingDataAccess();
             }

@@ -5,9 +5,9 @@ using Interfaces;
 
 namespace Mocks.Factory
 {
-    class WebApiDataAccess : DataAccessMode, Interfaces.ISubject
+    class WebApiDataAccess : DataAccessMode, ISubject
     {
-        public List<Subject> GetSubjects()
+        public override List<Subject> GetSubjects()
         {
             // TODO call web API and return results of the call
             return new List<Subject>()
