@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoseidonTests", "PoseidonTests\PoseidonTests.csproj", "{A152630B-7EDA-4BB0-A8B1-C84FAA13A980}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetClient", "AspNetClient\AspNetClient.csproj", "{3FCDD4F0-B770-4567-B678-57BEEDEC16EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetClient", "AspNetClient\AspNetClient.csproj", "{42BBB201-AF70-403E-B6FB-88AFC8BE2139}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{A152630B-7EDA-4BB0-A8B1-C84FAA13A980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A152630B-7EDA-4BB0-A8B1-C84FAA13A980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A152630B-7EDA-4BB0-A8B1-C84FAA13A980}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3FCDD4F0-B770-4567-B678-57BEEDEC16EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FCDD4F0-B770-4567-B678-57BEEDEC16EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FCDD4F0-B770-4567-B678-57BEEDEC16EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FCDD4F0-B770-4567-B678-57BEEDEC16EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42BBB201-AF70-403E-B6FB-88AFC8BE2139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42BBB201-AF70-403E-B6FB-88AFC8BE2139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42BBB201-AF70-403E-B6FB-88AFC8BE2139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42BBB201-AF70-403E-B6FB-88AFC8BE2139}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
