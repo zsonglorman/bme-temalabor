@@ -9,11 +9,15 @@ namespace AspNetClient.Controllers
 {
     public class HomeController : Controller
     {
+        private ISubjectManager subjectManager;
+
+        public HomeController(ISubjectManager subjectManager)
+        {
+            this.subjectManager = subjectManager;
+        }
+
         public IActionResult Index()
         {
-            // create mocking data access 
-            var subjectManager = Mocks.Factory.DataAccessFactory.GetDataAccess();
-
             // get subjects with data access
             List<Subject> subjects = subjectManager.GetSubjects();
 

@@ -47,6 +47,8 @@ namespace AspNetClient
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            // TODO register ISubjectManager
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
