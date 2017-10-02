@@ -4,9 +4,9 @@ using Interfaces;
 
 namespace Mocks.Factory
 {
-    class MockingDataAccess : DataAccessMode, ISubject
+    class MockSubjectManager : ISubjectManager
     {
-        public override List<Subject> GetSubjects()
+        public List<Subject> GetSubjects()
         {
             return new List<Subject>()
             {

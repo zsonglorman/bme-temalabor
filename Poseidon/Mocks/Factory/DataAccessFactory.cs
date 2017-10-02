@@ -5,15 +5,15 @@
         // TODO should be made private
         public static bool Mocking = true;
 
-        public static DataAccessMode GetDataAccess()
+        public static Interfaces.ISubjectManager GetDataAccess()
         {
             if (Mocking)
             {
-                return new MockingDataAccess();
+                return new MockSubjectManager();
             }
             else
             {
-                return new WebApiDataAccess();
+                return new WebApiSubjectManager();
             }
         }
     }

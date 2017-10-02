@@ -12,10 +12,10 @@ namespace AspNetClient.Controllers
         public IActionResult Index()
         {
             // create mocking data access 
-            Mocks.Factory.DataAccessMode dataAccess = Mocks.Factory.DataAccessFactory.GetDataAccess();
+            var subjectManager = Mocks.Factory.DataAccessFactory.GetDataAccess();
 
             // get subjects with data access
-            List<Subject> subjects = dataAccess.GetSubjects();
+            List<Subject> subjects = subjectManager.GetSubjects();
 
             return Content(string.Join("\r\n", subjects));
         }

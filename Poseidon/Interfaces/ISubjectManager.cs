@@ -2,7 +2,7 @@
 
 namespace Interfaces
 {
-    public interface ISubject
+    public interface ISubjectManager
     {
         List<Subject> GetSubjects();
     }
