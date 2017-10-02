@@ -1,4 +1,8 @@
+Ôªøusing System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Service.Controllers
@@ -11,11 +15,11 @@ namespace Service.Controllers
         [HttpGet]
         public IEnumerable<Interfaces.Subject> Get()
         {
-            // TODO select from DB
+            // TODO get data from DB
             return new List<Interfaces.Subject>()
             {
-                new Interfaces.Subject(1, "A programoz·s alapjai 1", "BMEVIEEAA00", 7, 1, "Dr. Czirkos Zolt·n"),
-                new Interfaces.Subject(2, "BevezetÈs a sz·mÌt·selmÈletbe 1", "BMEVISZAA00", 4, 1, "Dr. SzeszlÈr D·vid")
+                new Interfaces.Subject(1, "A programoz√°s alapjai 1", "BMEVIEEAA00", 7, 1, "Dr. Czirkos Zolt√°n"),
+                new Interfaces.Subject(2, "Bevezet√©s a sz√°m√≠t√°selm√©letbe 1", "BMEVISZAA00", 4, 1, "Dr. Szeszl√©r D√°vid")
             };
         }
     }
