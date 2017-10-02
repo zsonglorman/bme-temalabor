@@ -11,9 +11,10 @@ using System;
 namespace Service.Migrations
 {
     [DbContext(typeof(PoseidonContext))]
-    partial class PoseidonContextModelSnapshot : ModelSnapshot
+    [Migration("20171002222458_DataAnnotations")]
+    partial class DataAnnotations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
