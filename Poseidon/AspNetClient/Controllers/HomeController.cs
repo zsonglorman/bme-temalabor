@@ -28,7 +28,7 @@ namespace AspNetClient.Controllers
 
         public IActionResult RegisterForSubjects()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewBag.Subjects = subjectManager.GetSubjects();
 
             return View();
         }

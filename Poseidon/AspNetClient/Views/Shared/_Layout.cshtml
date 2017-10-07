@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AspNetClient</title>
+    <title>@ViewData["Title"] - Posseidon</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -33,18 +33,22 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="navbar-brand"><span class="glyphicon glyphicon-user"></span> Kiss Béla</div>
+                
                 <div class="navbar-collapse collapse">
-                      
+                    <div class="navbar-brand"><span class="glyphicon glyphicon-user"></span> Kiss Béla</div>
                     <ul class="nav navbar-nav navbar-left">
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Kezdőlap</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="RegisterForSubjects">Tárgyfelvétel</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="RegisteredSubjects">Felvett tárgyak</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li style="">
-                            <a asp-area="" asp-controller="Home" asp-action="Settings"> <span class="glyphicon glyphicon-cog"></span> Beállítások</a>
+                    
+
+                    <ul class="nav navbar-nav navbar-right list-inline ">
+                        <li class="searchBar">
+                            <input type="text" class="form-control" placeholder="Search">
+                            
                         </li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Settings"> <span class="glyphicon glyphicon-cog"></span> Beállítások</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="SignOut"> <span class="glyphicon glyphicon-off"></span> Kilépés</a></li>
                     </ul>
                 </div>
@@ -52,12 +56,10 @@
 
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container body-content centered">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - AspNetClient</p>
-        </footer>
+        
+        
     </div>
 
     <environment include="Development">
