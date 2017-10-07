@@ -35,8 +35,6 @@ namespace AspNetClient.Controllers
         
         public IActionResult RegisteredSubjects()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
         public IActionResult Settings()
