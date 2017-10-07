@@ -13,33 +13,42 @@ namespace AspNetClient.Controllers
     {
         private ISubjectManager subjectManager;
 
-        public HomeController(ISubjectManager subjectManager)
+        public HomeController()
         {
-            this.subjectManager = subjectManager;
+            this.subjectManager = Mocks.Factory.DataAccessFactory.GetDataAccess(); 
         }
 
         public IActionResult Index()
         {
             // get subjects with data access
-            List<Subject> subjects = subjectManager.GetSubjects();
 
-            return Content(string.Join("\r\n", subjects));
+            return View();
+            //return Content(string.Join("\r\n", subjects));
         }
 
-        public IActionResult About()
+        public IActionResult RegisterForSubjects()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult RegisteredSubjects()
         {
             ViewData["Message"] = "Your contact page.";
 
             return View();
         }
+        public IActionResult Settings()
+        {
 
+            return View();
+        }
+
+        public IActionResult SignOut()
+        {
+            return Content("NotImplemented");
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
