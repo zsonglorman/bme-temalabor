@@ -45,7 +45,7 @@
 
                     <ul class="nav navbar-nav navbar-right list-inline ">
                         <li class="searchBar">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input id="searchForSubject"type="text" class="form-control" placeholder="Search" onkeypress="return runScript(event)">
                             
                         </li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Settings"> <span class="glyphicon glyphicon-cog"></span> Beállítások</a></li>
@@ -82,7 +82,15 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+    <script>
+        function runScript(e) {
+            if (e.keyCode == 13) {
+                var url = '@Url.Action("RegisterForSubjects", "Home")';
+                window.location.href = url +'?search=' + document.getElementById("searchForSubject").value;
+                return false;
+            }
+        }
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -25,14 +25,14 @@ namespace AspNetClient.Controllers
             return View();
             //return Content(string.Join("\r\n", subjects));
         }
-
-        public IActionResult RegisterForSubjects()
+        public IActionResult RegisterForSubjects(string search)
         {
             ViewBag.Subjects = subjectManager.GetSubjects();
-
+            
+            ViewBag.SearchedSubjectName = search;
             return View();
         }
-
+        
         public IActionResult RegisteredSubjects()
         {
             ViewData["Message"] = "Your contact page.";
