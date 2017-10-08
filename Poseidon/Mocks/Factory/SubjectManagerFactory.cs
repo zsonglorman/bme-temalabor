@@ -1,11 +1,11 @@
 ﻿namespace Mocks.Factory
 {
-    public static class DataAccessFactory
+    public static class SubjectManagerFactory
     {
         // TODO should be made private
         public static bool Mocking = true;
 
-        public static Interfaces.ISubjectManager GetDataAccess()
+        public static Interfaces.ISubjectManager GetSubjectManager()
         {
             if (Mocking)
             {

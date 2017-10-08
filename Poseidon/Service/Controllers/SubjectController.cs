@@ -21,7 +21,6 @@ namespace Service.Controllers
         [HttpGet]
         public IEnumerable<Interfaces.Subject> Get()
         {
-
             Models.Subject[] entitySubjects = context.Subjects.ToArray<Models.Subject>();
 
             List<Interfaces.Subject> subjects = new List<Interfaces.Subject>();
