@@ -16,5 +16,20 @@ namespace Mocks.Factory
                 new Subject(2, "Bevezetés a számításelméletbe 1", "BMEVISZAA00", 4, 1, "Dr. Szeszlér Dávid")
             };
         }
+
+        public List<Subject> SearchSubjects(string keyword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Course> GetCoursesOfSubject(int subjectId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Grade> GetGradesOfSemester(int semester)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
