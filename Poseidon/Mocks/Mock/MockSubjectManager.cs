@@ -4,7 +4,7 @@ using Interfaces;
 
 namespace Mocks.Factory
 {
-    class MockSubjectManager : ISubjectManager
+    public class MockSubjectManager : ISubjectManager
     {
         public List<Subject> GetSubjects()
         {

@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Mocks.Factory
 {
-    class WebApiSubjectManager : ISubjectManager
+    public class WebApiSubjectManager : ISubjectManager
     {
         private static readonly HttpClient Client = new HttpClient();
 

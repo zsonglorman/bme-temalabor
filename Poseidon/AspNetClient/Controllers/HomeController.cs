@@ -11,35 +11,56 @@ namespace AspNetClient.Controllers
 {
     public class HomeController : Controller
     {
+        const int MIN_SEARCH_LENGTH = 3;
         private ISubjectManager subjectManager;
 
-        public HomeController(ISubjectManager subjectManager)
+        public HomeController( ISubjectManager subjectManager)
         {
-            this.subjectManager = subjectManager;
+            this.subjectManager = subjectManager; 
         }
 
         public IActionResult Index()
         {
-            // get subjects with data access
-            List<Subject> subjects = subjectManager.GetSubjects();
-
-            return Content(string.Join("\r\n", subjects));
+            return View();        
         }
-
-        public IActionResult About()
+        public IActionResult RegisterForSubjects(string search)
         {
-            ViewData["Message"] = "Your application description page.";
+            if (ModelState.IsValid)
+            {
+                if (search != null && search.Length >= MIN_SEARCH_LENGTH)
+                {
+                    return View(new RegisterForSubjectsViewModel(
+                            subjectManager.GetSubjects().Where(
+                            s => s.Name.ToUpper().Contains(search.ToUpper())
+                            || s.Code.ToUpper().Contains(search.ToUpper()))
+                            .ToList()));
+                }
+                else
+                {
+                    return View(new RegisterForSubjectsViewModel(subjectManager.GetSubjects()));
+                }
+            }
+            else
+            {
+                return Error();
+            }
+
+        }
+        
+        public IActionResult RegisteredSubjects()
+        {
+            return View();
+        }
+        public IActionResult Settings()
+        {
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult SignOut()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            return Content("NotImplemented");
         }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
