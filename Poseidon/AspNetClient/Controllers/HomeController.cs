@@ -13,9 +13,9 @@ namespace AspNetClient.Controllers
     {
         private ISubjectManager subjectManager;
 
-        public HomeController()
+        public HomeController( ISubjectManager subjectManager)
         {
-            this.subjectManager = Mocks.Factory.DataAccessFactory.GetDataAccess(); 
+            this.subjectManager = subjectManager; 
         }
 
         public IActionResult Index()

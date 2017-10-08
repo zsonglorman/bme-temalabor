@@ -5,7 +5,7 @@ using Interfaces;
 
 namespace Mocks.Factory
 {
-    class WebApiSubjectManager : ISubjectManager
+    public class WebApiSubjectManager : ISubjectManager
     {
         public List<Subject> GetSubjects()
         {
