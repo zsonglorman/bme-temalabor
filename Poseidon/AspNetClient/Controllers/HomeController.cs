@@ -11,6 +11,7 @@ namespace AspNetClient.Controllers
 {
     public class HomeController : Controller
     {
+        const int MIN_SEARCH_LENGTH = 3;
         private ISubjectManager subjectManager;
 
         public HomeController( ISubjectManager subjectManager)
@@ -20,17 +21,30 @@ namespace AspNetClient.Controllers
 
         public IActionResult Index()
         {
-            // get subjects with data access
-
-            return View();
-            //return Content(string.Join("\r\n", subjects));
+            return View();        
         }
         public IActionResult RegisterForSubjects(string search)
         {
-            ViewBag.Subjects = subjectManager.GetSubjects();
-            
-            ViewBag.SearchedSubjectName = search;
-            return View();
+            if (ModelState.IsValid)
+            {
+                if (search != null && search.Length >= MIN_SEARCH_LENGTH)
+                {
+                    return View(new RegisterForSubjectsViewModel(
+                            subjectManager.GetSubjects().Where(
+                            s => s.Name.ToUpper().Contains(search.ToUpper())
+                            || s.Code.ToUpper().Contains(search.ToUpper()))
+                            .ToList()));
+                }
+                else
+                {
+                    return View(new RegisterForSubjectsViewModel(subjectManager.GetSubjects()));
+                }
+            }
+            else
+            {
+                return Error();
+            }
+
         }
         
         public IActionResult RegisteredSubjects()
