@@ -13,7 +13,7 @@ namespace PoseidonTests
         {
             // create mocking data access
             Mocks.Factory.DataAccessFactory.Mocking = true;
-            Mocks.Factory.DataAccessMode dataAccess = Mocks.Factory.DataAccessFactory.GetDataAccess();
+            var dataAccess = Mocks.Factory.DataAccessFactory.GetDataAccess();
 
             // get subjects with data access
             List<Subject> subjects = dataAccess.GetSubjects();
@@ -27,7 +27,7 @@ namespace PoseidonTests
         {
             // create web API data access
             Mocks.Factory.DataAccessFactory.Mocking = false;
-            Mocks.Factory.DataAccessMode dataAccess = Mocks.Factory.DataAccessFactory.GetDataAccess();
+            var dataAccess = Mocks.Factory.DataAccessFactory.GetDataAccess();
 
             // get subjects with data access
             List<Subject> subjects = dataAccess.GetSubjects();
