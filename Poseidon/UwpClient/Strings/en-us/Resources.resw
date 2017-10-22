@@ -133,16 +133,16 @@
     <value>Chart</value>
     <comment>Page title for Chart</comment>
   </data>
-  <data name="Tabbed_Pivot.Text" xml:space="preserve">  
-    <value>Tabbed</value>
+  <data name="Tabbed_Pivot.Text" xml:space="preserve">
+    <value>Füles nézet</value>
     <comment>Page title for Tabbed</comment>
   </data>
-  <data name="Tabbed_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
+  <data name="Tabbed_PivotItem1.Header" xml:space="preserve">
+    <value>Fül 1</value>
     <comment>First Pivot item title for Tabbed</comment>
   </data>
   <data name="Tabbed_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
+    <value>Fül 2</value>
     <comment>Second Pivot item title for Tabbed</comment>
   </data>
   <data name="ContactsPage_Title.Text" xml:space="preserve">
@@ -169,27 +169,26 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">    
+  <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
     <comment>About this application title for Settings</comment>
   </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">    
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
     <value>Settings page placeholder text.  Your app description goes here.</value>
     <comment>About this application description for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">    
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">  
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
     <comment>Here is your Privacy Statement url for Settings</comment>
   </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">   
+  <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
     <comment>Personalization text for Settings</comment>
   </data>
-  NavigateUri
   <data name="Shell_StartPage" xml:space="preserve">
     <value>StartPage</value>
     <comment>Navigation view item name for StartPage</comment>

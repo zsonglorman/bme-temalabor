@@ -4,8 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:MyToolkit.Controls"
+    xmlns:tg="using:Telerik.UI.Xaml.Controls.Grid"
     DataContext="{Binding TabbedViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
+
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -20,15 +23,43 @@
             Style="{StaticResource PageTitleStyle}"
             Margin="12,0,12,7"/>
 
+        <ComboBox Name="SemesterCombo" HorizontalAlignment="Center"
+                  VerticalAlignment="Center" SelectionChanged="SemesterCombo_SelectionChanged" >
+            <ComboBoxItem Content="1.félév" Name="FirstSemester"/>
+            <ComboBoxItem Content="2.félév" Name="SecondSemester"/>
+            <ComboBoxItem Content="3.félév" Name="ThirdSemester"/>
+            <ComboBoxItem Content="4.félév" Name="FourthSemester"/>
+            <ComboBoxItem Content="5.félév" Name="FifthSemester" IsSelected="True"/>
+            <ComboBoxItem Content="6.félév" Name="SixthSemester"/>
+            <ComboBoxItem Content="7.félév" Name="SeventhSemester"/>
+        </ComboBox>
+
         <Pivot Grid.Row="1">
             <PivotItem x:Uid="Tabbed_PivotItem1">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                <Grid Grid.Row="1" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <!--
                     The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                     Place your content here.
                     -->
 
+                    <!-- <tg:RadDataGrid ColumnDataOperationsMode="Flyout" x:Name="grid" ItemsSource="{x:Bind ViewModel.Source}" /> -->
+
+                    <controls:DataGrid x:Name="SubjectDataGrid" SelectionMode="Multiple" controls:DataGridExtensions.UseSingleSelectionAndDeselection="true">
+                        <controls:DataGrid.Columns>
+                            <controls:DataGridTextColumn
+                                Width="200" Header="Tárgynév" CanSort="True"/>
+                            <controls:DataGridTextColumn Width="200" Binding="{Binding Lastname}">
+                                <controls:DataGridTextColumn.Header>
+                                    <TextBlock Text="Kredit" Foreground="Green" />
+                                </controls:DataGridTextColumn.Header>
+                            </controls:DataGridTextColumn>
+                            <controls:DataGridTextColumn Header="Osztályzat" Width="200"/>
+                            <controls:DataGridTextColumn Header="Aláírás" Width="200" CanSort="True"/>
+                        </controls:DataGrid.Columns>
+
+                    </controls:DataGrid>
                 </Grid>
+
             </PivotItem>
             
             <PivotItem x:Uid="Tabbed_PivotItem2">
