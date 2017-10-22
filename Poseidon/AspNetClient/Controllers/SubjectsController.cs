@@ -20,25 +20,16 @@ namespace AspNetClient.Controllers
         }
         public IActionResult Index(string search)
         {
-                if (ModelState.IsValid)
-                {
-                    if (search != null && search.Length >= MIN_SEARCH_LENGTH)
-                    {
-                        return View(new RegisterForSubjectsViewModel(
-                                subjectManager.GetSubjects().Where(
-                                s => s.Name.ToUpper().Contains(search.ToUpper())
-                                || s.Code.ToUpper().Contains(search.ToUpper()))
-                                .ToList()));
-                    }
-                    else
-                    {
-                        return View(new RegisterForSubjectsViewModel(subjectManager.GetSubjects()));
-                    }
-                }
-                else
-                {
-                    return Error();
-                }
+            ViewData.Add("Search", search);
+            if (search != null && search.Length >= MIN_SEARCH_LENGTH)
+            {
+                return View(new RegisterForSubjectsViewModel(
+                        subjectManager.SearchSubjects(search)));
+            }
+            else
+            {
+                return View(new RegisterForSubjectsViewModel(subjectManager.GetSubjects()));
+            }
         }
 
         public IActionResult Error()

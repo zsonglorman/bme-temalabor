@@ -44,9 +44,9 @@
                             </ul>
                         </li>
                     </ul>
-                        <form class="navbar-form navbar-right">
+                        <form asp-controller="Subjects" asp-action="Index" method="get" class="navbar-form navbar-right">
                             <div class="form-group input-group">
-                                <input type="text" class="form-control" placeholder="Tárgynév/Tárgykód">
+                                <input type="text" class="form-control" name="search" placeholder="Tárgynév/Tárgykód" value=@ViewData["Search"]>
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-primary">Keresés</button>
                                 </span>
