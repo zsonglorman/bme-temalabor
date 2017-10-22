@@ -11,7 +11,6 @@ namespace AspNetClient.Controllers
 {
     public class HomeController : Controller
     {
-        const int MIN_SEARCH_LENGTH = 3;
         private ISubjectManager subjectManager;
 
         public HomeController( ISubjectManager subjectManager)
@@ -23,34 +22,7 @@ namespace AspNetClient.Controllers
         {
             return View();        
         }
-        public IActionResult RegisterForSubjects(string search)
-        {
-            if (ModelState.IsValid)
-            {
-                if (search != null && search.Length >= MIN_SEARCH_LENGTH)
-                {
-                    return View(new RegisterForSubjectsViewModel(
-                            subjectManager.GetSubjects().Where(
-                            s => s.Name.ToUpper().Contains(search.ToUpper())
-                            || s.Code.ToUpper().Contains(search.ToUpper()))
-                            .ToList()));
-                }
-                else
-                {
-                    return View(new RegisterForSubjectsViewModel(subjectManager.GetSubjects()));
-                }
-            }
-            else
-            {
-                return Error();
-            }
 
-        }
-        
-        public IActionResult RegisteredSubjects()
-        {
-            return View();
-        }
         public IActionResult Settings()
         {
 
