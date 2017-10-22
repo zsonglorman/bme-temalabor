@@ -134,7 +134,7 @@
     <comment>Page title for Chart</comment>
   </data>
   <data name="Tabbed_Pivot.Text" xml:space="preserve">
-    <value>Füles nézet</value>
+    <value>Összesítések</value>
     <comment>Page title for Tabbed</comment>
   </data>
   <data name="Tabbed_PivotItem1.Header" xml:space="preserve">
@@ -206,7 +206,7 @@
     <comment>Navigation view item name for Chart</comment>
   </data>
   <data name="Shell_Tabbed" xml:space="preserve">
-    <value>Füles</value>
+    <value>Összesítések</value>
     <comment>Navigation view item name for Tabbed</comment>
   </data>
   <data name="Shell_ContactsPage" xml:space="preserve">

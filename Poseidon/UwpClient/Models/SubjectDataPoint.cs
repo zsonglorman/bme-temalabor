@@ -13,5 +13,7 @@ namespace UwpClient.Models
 
         public int Semester { get; set; }
 
+        public int ReceivedGrade { get; set; }
+
     }
 }

@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:MyToolkit.Controls"
     xmlns:tg="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
     DataContext="{Binding TabbedViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
@@ -44,31 +45,90 @@
 
                     <!-- <tg:RadDataGrid ColumnDataOperationsMode="Flyout" x:Name="grid" ItemsSource="{x:Bind ViewModel.Source}" /> -->
 
-                    <controls:DataGrid x:Name="SubjectDataGrid" SelectionMode="Multiple" controls:DataGridExtensions.UseSingleSelectionAndDeselection="true">
+                    <controls:DataGrid x:Name="SubjectDataGrid" SelectionMode="Multiple" controls:DataGridExtensions.UseSingleSelectionAndDeselection="true"
+                                       ScrollViewer.IsScrollInertiaEnabled="True"
+                                       ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                       ScrollViewer.VerticalScrollMode="Enabled"
+                                       SelectionChanged="SemesterCombo_SelectionChanged"
+                                       >
                         <controls:DataGrid.Columns>
                             <controls:DataGridTextColumn
-                                Width="200" Header="Tárgynév" CanSort="True"/>
-                            <controls:DataGridTextColumn Width="200" Binding="{Binding Lastname}">
+                                Width="200" Header="Tárgynév" CanSort="True" Binding="{Binding Tárgynév}"/>
+                            <controls:DataGridTextColumn Width="200" Binding="{Binding Kredit}">
                                 <controls:DataGridTextColumn.Header>
                                     <TextBlock Text="Kredit" Foreground="Green" />
                                 </controls:DataGridTextColumn.Header>
                             </controls:DataGridTextColumn>
-                            <controls:DataGridTextColumn Header="Osztályzat" Width="200"/>
-                            <controls:DataGridTextColumn Header="Aláírás" Width="200" CanSort="True"/>
+                            <controls:DataGridTextColumn Header="Osztályzat" Width="200" Binding="{Binding Osztályzat}"/>
+                            <controls:DataGridTemplatedColumn Header="Aláírás" Width="200">
+                                <controls:DataGridTemplatedColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Name="AláírásCheckBox" IsEnabled="True" />
+                                    </DataTemplate>
+                                </controls:DataGridTemplatedColumn.CellTemplate>
+                            </controls:DataGridTemplatedColumn>
                         </controls:DataGrid.Columns>
 
+                        <controls:DataGrid.ItemDetailsTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="10,10,10,5" d:DataContext="{d:DesignData Type=Subject}">
+                                    <TextBlock Text="{Binding Tárgynév}" />
+                                    <TextBlock Text="{Binding Kredit}" />
+                                    <TextBlock Text="{Binding Osztályzat}" />
+                                    <CheckBox Content="{Binding Aláírás}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </controls:DataGrid.ItemDetailsTemplate>
                     </controls:DataGrid>
                 </Grid>
 
             </PivotItem>
             
             <PivotItem x:Uid="Tabbed_PivotItem2">
-                <Grid Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+                <Grid Grid.Row="1" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                     <!--
                     The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                     Place your content here.
                     -->
 
+                    <telerikChart:RadCartesianChart x:Name="radChart">
+                        <telerikChart:RadCartesianChart.HorizontalAxis>
+                            <telerikChart:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">
+                                <telerikChart:CategoricalAxis.LineStyle>
+                                    <Style TargetType="Line">
+                                        <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
+                                    </Style>
+                                </telerikChart:CategoricalAxis.LineStyle>
+                                <telerikChart:CategoricalAxis.MajorTickStyle>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Fill" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
+                                    </Style>
+                                </telerikChart:CategoricalAxis.MajorTickStyle>
+                            </telerikChart:CategoricalAxis>
+                        </telerikChart:RadCartesianChart.HorizontalAxis>
+                        <telerikChart:RadCartesianChart.VerticalAxis>
+                            <telerikChart:LinearAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" >
+                                <telerikChart:LinearAxis.LineStyle>
+                                    <Style TargetType="Line">
+                                        <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
+                                    </Style>
+                                </telerikChart:LinearAxis.LineStyle>
+                                <telerikChart:LinearAxis.MajorTickStyle>
+                                    <Style TargetType="Rectangle">
+                                        <Setter Property="Fill" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
+                                    </Style>
+                                </telerikChart:LinearAxis.MajorTickStyle>
+                            </telerikChart:LinearAxis>
+                        </telerikChart:RadCartesianChart.VerticalAxis>
+                        <telerikChart:BarSeries ItemsSource="{x:Bind ViewModel.GradeSample}" ShowLabels="True">
+                            <telerikChart:BarSeries.CategoryBinding>
+                                <telerikChart:PropertyNameDataPointBinding PropertyName="Semester" />
+                            </telerikChart:BarSeries.CategoryBinding>
+                            <telerikChart:BarSeries.ValueBinding>
+                                <telerikChart:PropertyNameDataPointBinding PropertyName="ReceivedGrade" />
+                            </telerikChart:BarSeries.ValueBinding>
+                        </telerikChart:BarSeries>
+                    </telerikChart:RadCartesianChart>
                 </Grid>
             </PivotItem>
         </Pivot>
