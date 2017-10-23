@@ -134,6 +134,7 @@
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="ViewModels\ChartViewModel.cs" />
     <Compile Include="ViewModels\ContactsPageViewModel.cs" />
+    <Compile Include="ViewModels\DetailsViewModel.cs" />
     <Compile Include="ViewModels\EnrollableSubjectsPageViewModel.cs" />
     <Compile Include="ViewModels\EnrolledSubjectsPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -147,6 +148,9 @@
     </Compile>
     <Compile Include="Views\ContactsPage.xaml.cs">
       <DependentUpon>ContactsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EnrollableSubjectsPage.xaml.cs">
       <DependentUpon>EnrollableSubjectsPage.xaml</DependentUpon>
@@ -201,6 +205,10 @@
     <Page Include="Views\ContactsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EnrollableSubjectsPage.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -174,6 +174,7 @@ namespace UwpClient.ViewModels
             _primaryItems.Add(new ShellNavigationItem("Shell_Tabbed".GetLocalized(), Symbol.Document, typeof(TabbedViewModel).FullName));
             _secondaryItems.Add(new ShellNavigationItem("Shell_ContactsPage".GetLocalized(), Symbol.ContactInfo, typeof(ContactsPageViewModel).FullName));
             _secondaryItems.Add(new ShellNavigationItem("Shell_Settings".GetLocalized(), Symbol.Setting, typeof(SettingsViewModel).FullName));
+           // _secondaryItems.Add(new ShellNavigationItem("Shell_DetailsPage".GetLocalized(),typeof(DetailsViewModel).FullName));
         }
 
         private void ItemSelected(ItemClickEventArgs args)

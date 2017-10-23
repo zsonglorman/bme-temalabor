@@ -29,5 +29,8 @@ namespace UwpClient.ViewModels
                 return SubjectService.GetGridSubjectData();
             }
         }
+
+        private Subject selectedSubject;
+        public Subject SelectedSubject { get { return selectedSubject; } }
     }
 }

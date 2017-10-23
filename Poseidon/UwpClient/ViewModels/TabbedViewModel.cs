@@ -14,14 +14,6 @@ namespace UwpClient.ViewModels
         {
         }
 
-        public ObservableCollection<SubjectDataPoint> Source
-        {
-            get
-            {
-                return SubjectService.GetChartSampleData();
-            }
-        }
-
         public ObservableCollection<Grade> GradeSource
         {
             get
@@ -34,6 +26,7 @@ namespace UwpClient.ViewModels
         {
             get
             {
+                //Fül 2 levő diagram
                 return SubjectService.TabChartSample(1);
             }
         }

@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="UwpClient.Views.DetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpClient.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="ContentArea"
+        Margin="12,0,12,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleRow" Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Name="TitlePage"
+            x:Uid="Details_Title"
+            FontSize="28" FontWeight="SemiLight" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" VerticalAlignment="Center"
+            Margin="0,0,12,7"/>
+
+
+        <Grid Grid.Row="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="0" Name="DetailsListBox" VerticalAlignment="Top" HorizontalAlignment="Center"
+                     ItemsSource="{Binding Subject}" SelectedItem="{Binding SelectedSubject, Mode=TwoWay}">
+                <ListView.Items>
+                 <ListViewItem Content="Name"/>
+                <ListViewItem Content="Code"/>
+                <ListViewItem Content="Credit"/>
+                <ListViewItem Content="RecommendedSemester"/>
+                <ListViewItem Content="ResponsibleProfessor"/>
+                </ListView.Items>
+            </ListView>
+               <StackPanel Grid.Column="1">
+                <ListView>
+                    <ListView.Items>
+                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.Code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.Credit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.RecommendedSemester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.ResponsibleProfessor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </ListView.Items>
+                </ListView>
+            </StackPanel>
+            
+        </Grid>
+
+        <!--  Adaptive triggers  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitlePage.Margin" Value="48,0,12,7"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

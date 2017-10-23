@@ -49,8 +49,9 @@
                                        ScrollViewer.IsScrollInertiaEnabled="True"
                                        ScrollViewer.VerticalScrollBarVisibility="Visible"
                                        ScrollViewer.VerticalScrollMode="Enabled"
-                                       SelectionChanged="SemesterCombo_SelectionChanged"
-                                       >
+                                       SelectionChanged="SemesterCombo_SelectionChanged">
+                        <!--ItemsSource="{x:Bind ViewModel.GradeSource}"-->
+                                       
                         <controls:DataGrid.Columns>
                             <controls:DataGridTextColumn
                                 Width="200" Header="Tárgynév" CanSort="True" Binding="{Binding Tárgynév}"/>
@@ -63,7 +64,7 @@
                             <controls:DataGridTemplatedColumn Header="Aláírás" Width="200">
                                 <controls:DataGridTemplatedColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox Name="AláírásCheckBox" IsEnabled="True" />
+                                        <CheckBox Name="AláírásCheckBox" IsEnabled="True"/>
                                     </DataTemplate>
                                 </controls:DataGridTemplatedColumn.CellTemplate>
                             </controls:DataGridTemplatedColumn>
