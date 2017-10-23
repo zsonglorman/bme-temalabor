@@ -38,6 +38,11 @@ namespace AspNetClient.Controllers
             return PartialView(id);
         }
 
+        public IActionResult Modify(int? id)
+        {
+            return PartialView(id);
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

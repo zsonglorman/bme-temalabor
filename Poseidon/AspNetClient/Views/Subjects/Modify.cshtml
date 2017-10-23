@@ -1,0 +1,42 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Modify";
+}
+
+<p>Tst @Model</p>
+<div style="padding: 10px">
+    <h2>Tárgynév: **</h2>
+    <h3>Tárgykód: **</h3>
+    <p>Kredit: **</p>
+    <p>Tárgyfelelős: **</p>
+    <p>Ajánlott félév: **</p>
+
+</div>
+<div class="modal-footer">
+    <div class="centered form-inline form-group" id="markForm">
+        <label>Aláírás: <input id="sign" checked type="checkbox"> Érdemjegy: <input id="mark" type="number" value="1" class="form-control"></label>
+
+    </div>
+</div>
+
+@section Scripts{ 
+    <script>
+        $("#sign").click(function () {
+            $("#mark").attr("disabled", !this.checked);
+            $("#mark").val("1");
+
+        });
+        function Submit() {
+            if (($("#mark").val() < 1) || ($("#mark").val() > 5)) {
+
+                $("#markForm").addClass("has-error");
+                return;
+            }
+
+            $("#myModal").modal('hide');
+            $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
+                $("#SuccessModal").slideUp(200);
+            });
+        }
+    </script>
+}

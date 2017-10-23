@@ -43,7 +43,9 @@
                                 <td>-</td>
                                 <td>@i.Signature</td>
                                 <td>@i.ReceivedGrade</td>
-                                <td class="text-center"><a asp-action="Edit" asp-controller="Home" asp-route-id="@i.SubjectID" class="btn btn-sm btn-success">Módosítás</a></td>
+                                <!--<td class="text-center"><a asp-action="Edit" asp-controller="Home" asp-route-id="@i.SubjectID" class="btn btn-sm btn-success">Módosítás</a></td>-->
+                                <td class="text-center"><a onclick="getPartialView(@i.SubjectID)" class="btn btn-sm btn-success">Módosítás</a></td>
+                                
                             </tr>
                         }
                     </tbody>
@@ -54,4 +56,41 @@
             <h1>Diagrammok</h1>
         </div>
     </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Módosítás</h2>
+                </div>
+                <div id="SubjectModify">
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Submit()">Módosítás</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Törlés</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+@section Scripts{
+    <script>
+        function getPartialView(id){
+            var url = "@Html.Raw(Url.Action("Modify", "Subjects", new { }))";
+            url = url.concat("/" + id);
+            $.ajax({
+                url: url,
+                type: "GET",
+                cache: false,
+                success: function(result){
+                    $("#SubjectModify").html(result)
+                }
+            });
+            $("#myModal").modal();
+        }
+    </script>
+}

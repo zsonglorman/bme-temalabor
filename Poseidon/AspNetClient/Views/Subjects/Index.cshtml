@@ -47,18 +47,38 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Tárgy felvétele</h4>
+                    <h2 class="modal-title">Tárgy felvétele</h2>
                 </div>
                     <div id="SubjectDetails">
                     </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="centered form-inline form-group" id="markForm">
+                        <label>Aláírás: <input id="sign" type="checkbox"> Érdemjegy: <input id="mark" disabled type="number" value="1" class="form-control"></label>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default centered" onclick="Submit()">Felvétel</button>
                 </div>
             </div>
 
         </div>
     </div>
     
+    <div class="modal fade " id="SuccessModal"  role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content alert alert-success" >
+
+                <div id="ResultMessage">
+                    Tárgyfelvétel sikeres
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
 
 @section Scripts{
@@ -74,8 +94,28 @@
                     $("#SubjectDetails").html(result)
                 }
             });
+            $("#sign").attr("checked", false);
+            $("#mark").val('1').attr("disabled", true);
             $("#myModal").modal();
             //document.getElementById("myModal").setAttribute("style", "display:normal");
+        }
+        $("#sign").click(function () {
+            $("#mark").attr("disabled", !this.checked);
+            $("#mark").val("1");
+
+        });
+
+        function Submit() {
+            if (($("#mark").val() < 1 )|| ($("#mark").val() > 5)) {
+
+                $("#markForm").addClass("has-error");
+                return;
+            }
+
+            $("#myModal").modal('hide');
+            $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
+                $("#SuccessModal").slideUp(200);
+            });
         }
     </script>
 }
