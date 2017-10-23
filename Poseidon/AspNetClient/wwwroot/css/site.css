@@ -16,6 +16,10 @@ body {
     vertical-align: middle;
 }
 
+.border-right {
+    border-right: 2px solid grey;
+}
+
 .nav.nav-center {
     display: inline-block;
     left: 0;
