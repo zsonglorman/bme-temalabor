@@ -8,6 +8,14 @@ body {
     height: 100%;
 }
 
+#content {
+    font-family: 'Roboto', sans-serif;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
 .nav.nav-center {
     display: inline-block;
     left: 0;

@@ -32,6 +32,12 @@ namespace AspNetClient.Controllers
             }
         }
 
+        // GET: Movies/Register/5
+        public IActionResult Register(int? id)
+        {
+            return View(id);
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

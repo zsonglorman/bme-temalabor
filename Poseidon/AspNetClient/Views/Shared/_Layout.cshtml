@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Posseidon</title>
 
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -15,8 +16,9 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
-<body>
+<body id="content">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Poseidon</a>
@@ -78,16 +80,7 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-    <script>
-        function runScript(e) {
-            if (e.keyCode == 13) {
-                var url = '@Url.Action("RegisterForSubjects", "Home")';
-                window.location.href = url +'?search=' + document.getElementById("searchForSubject").value;
-                return false;
-            }
-        }
-    </script>
+    </environment> 
     @RenderSection("Scripts", required: false)
 </body>
 </html>
