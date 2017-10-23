@@ -35,7 +35,7 @@ namespace AspNetClient.Controllers
         // GET: Movies/Register/5
         public IActionResult Register(int? id)
         {
-            return View(id);
+            return PartialView(id);
         }
 
         public IActionResult Error()
