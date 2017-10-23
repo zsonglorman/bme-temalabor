@@ -5,13 +5,14 @@
     ViewData["Title"] = "Tárgyfelvétel";
     
 }
-<div class="row">
+<div class="container">
+    <div class="row">
         <div class="col-md-2 h1 text-left">@ViewData["Title"]</div>
-</div>
+    </div>
     <br />
     <div class="row">
-        <div class="col-md-12">
-            <table id="subjectTable" class="table table-bordered table-striped table-responsive table-hover">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Tárgynév</th>
@@ -38,3 +39,4 @@
             </table>
         </div>
     </div>
+</div>
