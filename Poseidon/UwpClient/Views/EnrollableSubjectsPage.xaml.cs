@@ -20,5 +20,10 @@ namespace UwpClient.Views
         {
             InitializeComponent();
         }
+
+        private void grid_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DetailsPage));
+        }
     }
 }

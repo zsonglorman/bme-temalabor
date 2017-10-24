@@ -18,14 +18,14 @@
 
         <TextBlock
             x:Name="TitlePage"
-            x:Uid="ChartView_Title"
+            x:Uid="EnrollableSubjectsPage_Title"
             FontSize="28" FontWeight="SemiLight" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" VerticalAlignment="Center"
             Margin="0,0,12,7"/>
 
         <Grid
             Grid.Row="1"
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <tg:RadDataGrid ColumnDataOperationsMode="Flyout" x:Name="grid" ItemsSource="{x:Bind ViewModel.Source}" />
+            <tg:RadDataGrid ColumnDataOperationsMode="Flyout" x:Name="grid" ItemsSource="{x:Bind ViewModel.Source}" DoubleTapped="grid_DoubleTapped"/>
         </Grid>
     </Grid>
 </Page>

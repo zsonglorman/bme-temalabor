@@ -25,6 +25,16 @@
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
+            <TextBlock HorizontalAlignment="Left" Height="36" Margin="216,56,0,0" TextWrapping="Wrap" Text="Készítők:" VerticalAlignment="Top" Width="150"/>
+            <ListView HorizontalAlignment="Left" Height="194" Margin="216,97,0,0" VerticalAlignment="Top" Width="150">
+                <ListView.Items >
+                    <ListViewItem IsEnabled="False">Király Péter</ListViewItem>
+                    <ListViewItem IsEnabled="False">Lengyel Krisztián</ListViewItem>
+                    <ListViewItem IsEnabled="False">Hegyi Ádám</ListViewItem>
+                    <ListViewItem IsEnabled="False">Tóth Attila</ListViewItem>
+                </ListView.Items>
+            </ListView>
+
         </Grid>
         <!--  Adaptive triggers  -->
         <VisualStateManager.VisualStateGroups>

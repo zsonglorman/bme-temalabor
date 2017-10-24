@@ -24,6 +24,7 @@ namespace UwpClient.ViewModels
             Register<TabbedViewModel, TabbedPage>();
             Register<ContactsPageViewModel, ContactsPagePage>();
             Register<SettingsViewModel, SettingsPage>();
+            Register<DetailsViewModel, DetailsPage>();
         }
 
         public SettingsViewModel SettingsViewModel => ServiceLocator.Current.GetInstance<SettingsViewModel>();
@@ -41,6 +42,8 @@ namespace UwpClient.ViewModels
         public StartPageViewModel StartPageViewModel => ServiceLocator.Current.GetInstance<StartPageViewModel>();
 
         public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
+
+        public DetailsViewModel DetailsViewModel => ServiceLocator.Current.GetInstance<DetailsViewModel>();
 
         public NavigationServiceEx NavigationService => ServiceLocator.Current.GetInstance<NavigationServiceEx>();
 

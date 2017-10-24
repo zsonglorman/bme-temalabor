@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mocks;
-
+using UwpClient.Models;
 
 namespace UwpClient.Services
 {
@@ -22,9 +22,35 @@ namespace UwpClient.Services
             return data;
         }
 
+        public static ObservableCollection<Grade> GetSubjectsBySemester(int semester)
+        {
+            //TODO:  elkérni a jó subjectmanagert és meghívni rajta az Interfacesben lévő fgv-t ha kész
+            Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
+
+            ObservableCollection<Grade> data = new ObservableCollection<Grade>(subjectManager.GetGradesOfSemester(semester));
+
+            return data;
+        }
+
+        public static ObservableCollection<SubjectDataPoint> TabChartSample(int semester)
+        {
+            var data = GetSubjectsBySemester(semester).Select(s => new SubjectDataPoint() { Semester = s.EnrollmentSemenster, ReceivedGrade = s.ReceivedGrade })
+                .OrderBy(dp => dp.Semester);
+
+            return new ObservableCollection<SubjectDataPoint>(data);
+        }
+
         public static ObservableCollection<Subject> GetGridSubjectData()
         {
             return new ObservableCollection<Subject>(AllOrders());
+        }
+
+        public static ObservableCollection<SubjectDataPoint> GetChartSampleData()
+        {
+            var data = AllOrders().Select(o => new SubjectDataPoint() { Credit = o.Credit, Semester = o.RecommendedSemester })
+                                  .OrderBy(dp => dp.Semester);
+
+            return new ObservableCollection<SubjectDataPoint>(data);
         }
     }
 }

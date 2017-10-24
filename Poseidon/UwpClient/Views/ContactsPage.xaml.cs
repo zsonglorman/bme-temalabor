@@ -17,5 +17,6 @@ namespace UwpClient.Views
         {
             InitializeComponent();
         }
+
     }
 }

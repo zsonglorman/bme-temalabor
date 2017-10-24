@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="StartPage_Title.Text" xml:space="preserve">
-    <value>StartPage</value>
+    <value>Kezdőlap</value>
     <comment>Page title for StartPage</comment>
   </data>
   <data name="EnrolledSubjectsPage_Title.Text" xml:space="preserve">
-    <value>EnrolledSubjectsPage</value>
+    <value>Felvett tárgyak</value>
     <comment>Page title for EnrolledSubjectsPage</comment>
   </data>
   <data name="EnrollableSubjectsPage_Title.Text" xml:space="preserve">
-    <value>EnrollableSubjectsPage</value>
+    <value>Felvehető tárgyak</value>
     <comment>Page title for EnrollableSubjectsPage</comment>
   </data>
   <data name="Chart_Title.Text" xml:space="preserve">
-    <value>Chart</value>
+    <value>Diagram</value>
     <comment>Page title for Chart</comment>
   </data>
-  <data name="Tabbed_Pivot.Text" xml:space="preserve">  
-    <value>Tabbed</value>
+  <data name="Tabbed_Pivot.Text" xml:space="preserve">
+    <value>Összesítések</value>
     <comment>Page title for Tabbed</comment>
   </data>
-  <data name="Tabbed_PivotItem1.Header" xml:space="preserve">  
-    <value>Item 1</value>
+  <data name="Tabbed_PivotItem1.Header" xml:space="preserve">
+    <value>Fül 1</value>
     <comment>First Pivot item title for Tabbed</comment>
   </data>
   <data name="Tabbed_PivotItem2.Header" xml:space="preserve">
-    <value>Item 2</value>
+    <value>Fül 2</value>
     <comment>Second Pivot item title for Tabbed</comment>
   </data>
   <data name="ContactsPage_Title.Text" xml:space="preserve">
-    <value>ContactsPage</value>
+    <value>Kapcsolatok</value>
     <comment>Page title for ContactsPage</comment>
   </data>
   <data name="Settings_Title.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Beállítások</value>
     <comment>Page title for Settings</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
@@ -169,53 +169,58 @@
     <value>Light</value>
     <comment>Light theme text for Settings</comment>
   </data>
-  <data name="Settings_About.Text" xml:space="preserve">    
+  <data name="Settings_About.Text" xml:space="preserve">
     <value>About this application</value>
     <comment>About this application title for Settings</comment>
   </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">    
+  <data name="Settings_AboutDescription.Text" xml:space="preserve">
     <value>Settings page placeholder text.  Your app description goes here.</value>
     <comment>About this application description for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">    
+  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Privacy Statement</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">  
+  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
     <comment>Here is your Privacy Statement url for Settings</comment>
   </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">   
+  <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
     <comment>Personalization text for Settings</comment>
   </data>
-  NavigateUri
   <data name="Shell_StartPage" xml:space="preserve">
-    <value>StartPage</value>
+    <value>Kezdőlap</value>
     <comment>Navigation view item name for StartPage</comment>
   </data>
   <data name="Shell_EnrolledSubjectsPage" xml:space="preserve">
-    <value>EnrolledSubjectsPage</value>
+    <value>Felvett tárgyak</value>
     <comment>Navigation view item name for EnrolledSubjectsPage</comment>
   </data>
   <data name="Shell_EnrollableSubjectsPage" xml:space="preserve">
-    <value>EnrollableSubjectsPage</value>
+    <value>Felvehető tárgyak</value>
     <comment>Navigation view item name for EnrollableSubjectsPage</comment>
   </data>
   <data name="Shell_Chart" xml:space="preserve">
-    <value>Chart</value>
+    <value>Diagram</value>
     <comment>Navigation view item name for Chart</comment>
   </data>
   <data name="Shell_Tabbed" xml:space="preserve">
-    <value>Tabbed</value>
+    <value>Összesítések</value>
     <comment>Navigation view item name for Tabbed</comment>
   </data>
   <data name="Shell_ContactsPage" xml:space="preserve">
-    <value>ContactsPage</value>
+    <value>Kapcsolatok</value>
     <comment>Navigation view item name for ContactsPage</comment>
   </data>
   <data name="Shell_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Beállítások</value>
     <comment>Navigation view item name for Settings</comment>
+  </data>
+  <data name="Details_Title.Text" xml:space="preserve">
+    <value>Részletek</value>
+  </data>
+  <data name="Shell_DetailsPage" xml:space="preserve">
+    <value />
   </data>
 </root>
