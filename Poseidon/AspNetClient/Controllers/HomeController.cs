@@ -20,7 +20,7 @@ namespace AspNetClient.Controllers
 
         public IActionResult Index(int id)
         {
-            return View( new HomeViewModel(subjectManager.GetGradesOfSemester(id)));
+            return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(id)));
         }
 
         public IActionResult Settings()

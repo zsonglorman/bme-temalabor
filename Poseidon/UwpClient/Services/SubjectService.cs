@@ -22,20 +22,22 @@ namespace UwpClient.Services
             return data;
         }
 
-        public static ObservableCollection<Grade> GetSubjectsBySemester(int semester)
+        public static ObservableCollection<SubjectWithGrades> GetSubjectsBySemester(int semester)
         {
             //TODO:  elkérni a jó subjectmanagert és meghívni rajta az Interfacesben lévő fgv-t ha kész
             Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
 
-            ObservableCollection<Grade> data = new ObservableCollection<Grade>(subjectManager.GetGradesOfSemester(semester));
+            ObservableCollection<SubjectWithGrades> data = new ObservableCollection<SubjectWithGrades>(subjectManager.GetSubjectsWithGradesOfSemester(semester));
 
             return data;
         }
 
         public static ObservableCollection<SubjectDataPoint> TabChartSample(int semester)
         {
-            var data = GetSubjectsBySemester(semester).Select(s => new SubjectDataPoint() { Semester = s.EnrollmentSemenster, ReceivedGrade = s.ReceivedGrade })
-                .OrderBy(dp => dp.Semester);
+            var data = GetSubjectsBySemester(semester).Select(s => new SubjectDataPoint()
+            {
+                Semester = s.Grades[0].EnrollmentSemenster, ReceivedGrade = s.Grades[0].ReceivedGrade
+            }).OrderBy(dp => dp.Semester);
 
             return new ObservableCollection<SubjectDataPoint>(data);
         }

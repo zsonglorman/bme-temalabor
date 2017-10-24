@@ -8,12 +8,12 @@ namespace AspNetClient.Models
 {
     public class HomeViewModel
     {
-            public IList<Interfaces.Grade> Grades { get; private set; }
+            public IList<Interfaces.SubjectWithGrades> SubjectWithGrades { get; private set; }
 
 
-            public HomeViewModel(List<Grade> grades)
+            public HomeViewModel(List<SubjectWithGrades> subjectWithGrades)
             {
-                Grades = grades;
+                SubjectWithGrades = subjectWithGrades;
             }
         }
 }
