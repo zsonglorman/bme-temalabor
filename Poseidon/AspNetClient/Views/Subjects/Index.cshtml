@@ -1,0 +1,121 @@
+﻿@model RegisterForSubjectsViewModel
+
+@using Interfaces;
+@{
+    ViewData["Title"] = "Tárgyfelvétel";
+    
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 h1 text-left">@ViewData["Title"]</div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Tárgynév</th>
+                        <th>Kredit</th>
+                        <th>Ajánlott félév</th>
+                        <th>Tárgykód</th>
+                        <th>Tárgyfelelős</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model.Subjects)
+                    {
+                        <tr>
+                            <td>@i.Name</td>
+                            <td>@i.Credit</td>
+                            <td>@i.RecommendedSemester</td>
+                            <td>@i.Code</td>
+                            <td>@i.ResponsibleProfessor</td>
+                            <!--<td class="text-center"><a asp-action="Register" asp-controller="Subjects" asp-route-id="@i.Id" class="btn btn-sm btn-success">Felvétel</a></td>-->
+                            <td class="text-center"><a onclick="getPartialView(@i.Id)" class="btn btn-sm btn-success">Felvétel</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog" >
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Tárgy felvétele</h2>
+                </div>
+                    <div id="SubjectDetails">
+                    </div>
+                <div class="modal-footer">
+                    <div class="centered form-inline form-group" id="markForm">
+                        <label>Aláírás: <input id="sign" type="checkbox"> Érdemjegy: <input id="mark" disabled type="number" value="1" class="form-control"></label>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default centered" onclick="Submit()">Felvétel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="modal fade " id="SuccessModal"  role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content alert alert-success" >
+
+                <div id="ResultMessage">
+                    Tárgyfelvétel sikeres
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function getPartialView(id){
+            var url = "@Html.Raw(Url.Action("Register", "Subjects", new { }))";
+            url = url.concat("/" + id);
+            $.ajax({
+                url: url,
+                type: "GET",
+                cache: false,
+                success: function(result){
+                    $("#SubjectDetails").html(result)
+                }
+            });
+            $("#sign").attr("checked", false);
+            $("#mark").val('1').attr("disabled", true);
+            $("#myModal").modal();
+            //document.getElementById("myModal").setAttribute("style", "display:normal");
+        }
+        $("#sign").click(function () {
+            $("#mark").attr("disabled", !this.checked);
+            $("#mark").val("1");
+
+        });
+
+        function Submit() {
+            if (($("#mark").val() < 1 )|| ($("#mark").val() > 5)) {
+
+                $("#markForm").addClass("has-error");
+                return;
+            }
+
+            $("#myModal").modal('hide');
+            $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
+                $("#SuccessModal").slideUp(200);
+            });
+        }
+    </script>
+}

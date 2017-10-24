@@ -11,6 +11,7 @@ namespace AspNetClient.Models
 
         public IList<Interfaces.Subject> Subjects { get; private set; }
 
+
         public RegisterForSubjectsViewModel(List<Subject> subjects)
         {
             Subjects = subjects;

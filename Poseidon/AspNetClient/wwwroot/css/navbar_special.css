@@ -1,0 +1,48 @@
+﻿
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.navbar-toggle {
+    z-index: 3;
+}
+
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+
+
+.form-control {
+    margin-top: 7px;
+}
+
+
+.container {
+    height: 100%;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
