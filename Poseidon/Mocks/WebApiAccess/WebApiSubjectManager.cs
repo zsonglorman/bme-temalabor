@@ -65,7 +65,7 @@ namespace Mocks.Factory
             return data;
         }
 
-        public List<Grade> GetGradesOfSemester(int semester)
+        public List<SubjectWithGrades> GetSubjectsWithGradesOfSemester(int semester)
         {
             if (Client.BaseAddress == null)
             {
@@ -77,9 +77,34 @@ namespace Mocks.Factory
 
             var response = Client.GetAsync("api/Grade/" + semester).Result;
             var stringData = response.Content.ReadAsStringAsync().Result;
-            var data = JsonConvert.DeserializeObject<List<Grade>>(stringData);
+            var data = JsonConvert.DeserializeObject<List<SubjectWithGrades>>(stringData);
 
             return data;
+        }
+
+        public void InsertGradeOfSubject(Grade grade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateGradeOfSubject(Grade grade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteGradeOfSubject(Grade grade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Subject> GetSubjectsWithGrades(int studentId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Grade> GetGradesOfSubject(int subjectId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

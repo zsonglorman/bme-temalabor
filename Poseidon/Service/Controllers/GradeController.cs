@@ -19,7 +19,7 @@ namespace Service.Controllers
             this.context = context;
         }
 
-        // Get grades of a semester
+        // Get subject with grades of a semester
         // GET: api/Grade/1
         [HttpGet("{semester}")]
         public IActionResult Get(int semester)
@@ -39,14 +39,33 @@ namespace Service.Controllers
                     return NotFound();
                 }
 
-                List<Interfaces.Grade> grades = new List<Interfaces.Grade>();
+                var subjectWithGrades = new List<Interfaces.SubjectWithGrades>();
+
+                int currentSubjectId = -1;
+                Interfaces.Subject currentSubject = null;
+                List<Interfaces.Grade> currentGrades = new List<Interfaces.Grade>();
 
                 foreach (Models.StudentSubject s in entityGrades)
                 {
-                    grades.Add(new Interfaces.Grade(s.StudentID, s.SubjectID, s.EnrollmentSemenster, s.Signature, s.Passed, s.Grade));
+                    if (s.Subject.SubjectID != currentSubjectId)
+                    {
+                        if (currentSubject != null)
+                        {
+                            subjectWithGrades.Add(new Interfaces.SubjectWithGrades(currentSubject, currentGrades));
+                        }
+
+                        currentSubjectId = s.Subject.SubjectID;
+                        currentSubject = new Interfaces.Subject(s.SubjectID, s.Subject.Name, s.Subject.Code, s.Subject.Credit, s.Subject.RecomendedSemester, s.Subject.ResponsibleProfessor);
+                        currentGrades.Clear();
+                        currentGrades.Add(new Interfaces.Grade(s.StudentID, s.SubjectID, s.EnrollmentSemenster, s.Signature, s.Passed, s.Grade));
+                    }
+                    else
+                    {
+                        currentGrades.Add(new Interfaces.Grade(s.StudentID, s.SubjectID, s.EnrollmentSemenster, s.Signature, s.Passed, s.Grade));
+                    }
                 }
 
-                return new ObjectResult(grades);
+                return new ObjectResult(subjectWithGrades);
             }
         }
     }

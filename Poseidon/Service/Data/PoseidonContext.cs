@@ -21,7 +21,7 @@ namespace Service.Data
             modelBuilder.Entity<Student>().ToTable("Student");
             modelBuilder.Entity<StudentSubject>()
                 .ToTable("StudentSubject")
-                .HasKey(s => new { s.Grade, s.EnrollmentSemenster });   // Sets composite primary key
+                .HasKey(s => new { s.StudentID, s.SubjectID, s.Grade, s.EnrollmentSemenster });   // Sets composite primary key
             modelBuilder.Entity<Subject>().ToTable("Subject");
         }
     }

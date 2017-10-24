@@ -15,7 +15,7 @@ namespace UwpClient.Services
 
         private static IEnumerable<Subject> AllOrders()
         {
-            Interfaces.ISubjectManager subjectManager = Mocks.Factory.DataAccessFactory.GetDataAccess();
+            Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
 
             ObservableCollection<Subject> data = new ObservableCollection<Subject>(subjectManager.GetSubjects());
 

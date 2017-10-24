@@ -44,7 +44,7 @@ namespace Service.Controllers
             else
             {
                 var entitySubjects = from b in context.Subjects
-                            where b.Name.ToUpper().Contains(keyword.ToUpper())
+                            where b.Name.ToUpper().Contains(keyword.ToUpper()) || b.Code.ToUpper().Contains(keyword.ToUpper())
                             select b;                
 
                 List<Interfaces.Subject> subjects = new List<Interfaces.Subject>();
