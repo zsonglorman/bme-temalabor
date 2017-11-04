@@ -13,7 +13,7 @@ namespace Mocks.Factory
     {
         private static readonly HttpClient Client = new HttpClient();
 
-        private const string ApiBaseAddress = "http://localhost:16150/";
+        private const string ApiBaseAddress = "http://localhost:10100/";
 
         /// <summary>
         /// Get all subjects (without grades).
