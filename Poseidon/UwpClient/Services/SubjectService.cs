@@ -61,6 +61,15 @@ namespace UwpClient.Services
 
         }
 
+        public static ObservableCollection<Course> GetCourseBySubject(int subjectid)
+        {
+            Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
+
+            ObservableCollection<Course> data = new ObservableCollection<Course>(subjectManager.GetCoursesOfSubject(subjectid));
+
+            return data;
+        }
+
         public static ObservableCollection<SubjectDataPoint> TabChartSample(int semester)
         {
             var data = GetSubjectsBySemester(semester).Select(s => new SubjectDataPoint()

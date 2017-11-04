@@ -20,45 +20,53 @@ namespace UwpClient.Views
         }
 
         private void SemesterCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { 
             var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
             if (comboBoxItem == null) return;
             var content = comboBoxItem.Content as string;
             var name = comboBoxItem.Name as string;
             if (name != null && name.Equals("FirstSemester"))
             {
-                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre
-                SubjectService.GetSubjectsBySemester(1);
+                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
+                SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(1));
+                SubjectPerSemesterGrid.InvalidateArrange();
             }
             else if(name != null && name.Equals("SecondSemester"))
             {
-                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre
-                SubjectService.GetSubjectsBySemester(2);
+                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
+                SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(2));
+                SubjectPerSemesterGrid.InvalidateArrange();
             }
             else if (name != null && name.Equals("ThirdSemester"))
             {
-                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre
-                SubjectService.GetSubjectsBySemester(3);
+                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
+                SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(3));
+                SubjectPerSemesterGrid.InvalidateArrange();
             }
             else if (name != null && name.Equals("FourthSemester"))
             {
-                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre
-                SubjectService.GetSubjectsBySemester(4);
+                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
+                SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(4));
+                SubjectPerSemesterGrid.InvalidateArrange();
             }
             else if (name != null && name.Equals("FifthSemester"))
             {
-                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre
+                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
                 SubjectService.GetSubjectsBySemester(5);
+                //SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(5));
+                //SubjectPerSemesterGrid.InvalidateArrange();
             }
             else if (name != null && name.Equals("SixthSemester"))
             {
-                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre
-                SubjectService.GetSubjectsBySemester(6);
+                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
+                SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(6));
+                SubjectPerSemesterGrid.InvalidateArrange();
             }
             else if (name != null && name.Equals("SeventhSemester"))
             {
-                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre
-                SubjectService.GetSubjectsBySemester(7);
+                //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
+                SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(7));
+                SubjectPerSemesterGrid.InvalidateArrange();
             }
         }
     }
