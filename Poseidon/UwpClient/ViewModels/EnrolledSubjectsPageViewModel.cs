@@ -11,7 +11,7 @@ namespace UwpClient.ViewModels
 {
     public class EnrolledSubjectsPageViewModel : ViewModelBase
     {
-        public ObservableCollection<Subject> Source
+        public ObservableCollection<Subject> SubjectSource
         {
             get
             {

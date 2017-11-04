@@ -32,6 +32,35 @@ namespace UwpClient.Services
             return data;
         }
 
+        public static ObservableCollection<SubjectAndGrade> GetTabbedPage(ObservableCollection<SubjectWithGrade> collection)
+        {
+            ObservableCollection<SubjectAndGrade> data = new ObservableCollection<SubjectAndGrade>();
+
+            foreach (var item in collection)
+            {
+                int id = item.Subject.Id;
+                string name = item.Subject.Name;
+                string code = item.Subject.Code;
+                int credit = item.Subject.Credit;
+                int recommendedSemester = item.Subject.RecommendedSemester;
+                string responsibleProfessor = item.Subject.ResponsibleProfessor;
+
+                int studentID = item.Grade.StudentID;
+                int subjectID = item.Grade.SubjectID;
+                int enrollmentSemester = item.Grade.EnrollmentSemester;
+                bool signature = item.Grade.Signature;
+                bool passed = item.Grade.Passed;
+                int receivedGrade = item.Grade.ReceivedGrade;
+
+                SubjectAndGrade temp = new SubjectAndGrade(id, name,code,credit,recommendedSemester, responsibleProfessor,studentID,subjectID,enrollmentSemester,signature,passed,receivedGrade);
+
+                data.Add(temp);
+            }
+
+            return data;
+
+        }
+
         public static ObservableCollection<SubjectDataPoint> TabChartSample(int semester)
         {
             var data = GetSubjectsBySemester(semester).Select(s => new SubjectDataPoint()

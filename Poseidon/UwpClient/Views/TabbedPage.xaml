@@ -45,13 +45,12 @@
 
                     <!-- <tg:RadDataGrid ColumnDataOperationsMode="Flyout" x:Name="grid" ItemsSource="{x:Bind ViewModel.Source}" /> -->
 
-                    <controls:DataGrid x:Name="SubjectDataGrid" SelectionMode="Multiple" controls:DataGridExtensions.UseSingleSelectionAndDeselection="true"
+                    <!--<controls:DataGrid x:Name="SubjectDataGrid" SelectionMode="Multiple" controls:DataGridExtensions.UseSingleSelectionAndDeselection="true"
                                        ScrollViewer.IsScrollInertiaEnabled="True"
                                        ScrollViewer.VerticalScrollBarVisibility="Visible"
                                        ScrollViewer.VerticalScrollMode="Enabled"
                                        SelectionChanged="SemesterCombo_SelectionChanged">
-                        <!--ItemsSource="{x:Bind ViewModel.GradeSource}"-->
-                                       
+
                         <controls:DataGrid.Columns>
                             <controls:DataGridTextColumn
                                 Width="200" Header="Tárgynév" CanSort="True" Binding="{Binding Tárgynév}"/>
@@ -80,7 +79,17 @@
                                 </StackPanel>
                             </DataTemplate>
                         </controls:DataGrid.ItemDetailsTemplate>
-                    </controls:DataGrid>
+                    </controls:DataGrid>-->
+
+                    <tg:RadDataGrid UserEditMode="Inline" ItemsSource="{x:Bind ViewModel.SubjectAndGradeSource}" AutoGenerateColumns="False" ColumnDataOperationsMode="Flyout" ColumnResizeHandleDisplayMode="Always">
+                        <tg:RadDataGrid.Columns>
+                            <tg:DataGridTextColumn PropertyName="Name" Header="Tárgynév" CanUserEdit="False"/>
+                            <tg:DataGridNumericalColumn PropertyName="Credit" Header="Kredit" CanUserEdit="False"/>
+                            <tg:DataGridNumericalColumn PropertyName="ReceivedGrade" Header="Osztályzat"/>
+                            <tg:DataGridBooleanColumn PropertyName="Signature" Header="Teljesítve"/>
+                        </tg:RadDataGrid.Columns>
+                    </tg:RadDataGrid>
+                    
                 </Grid>
 
             </PivotItem>
