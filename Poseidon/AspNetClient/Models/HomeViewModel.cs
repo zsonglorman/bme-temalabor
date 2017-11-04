@@ -13,7 +13,10 @@ namespace AspNetClient.Models
 
             public HomeViewModel(List<SubjectWithGrade> subjectWithGrade)
             {
-                SubjectWithGrade = subjectWithGrade;
+                if (subjectWithGrade != null)
+                    SubjectWithGrade = subjectWithGrade;
+                else
+                    SubjectWithGrade = new List<SubjectWithGrade>(); ;
             }
         }
 }
