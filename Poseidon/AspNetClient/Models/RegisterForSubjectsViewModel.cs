@@ -14,7 +14,10 @@ namespace AspNetClient.Models
 
         public RegisterForSubjectsViewModel(List<Subject> subjects)
         {
-            Subjects = subjects;
+            if (subjects != null)
+                Subjects = subjects;
+            else
+                Subjects = new List<Subject>();
         }
 
 

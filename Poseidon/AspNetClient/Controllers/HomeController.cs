@@ -18,9 +18,10 @@ namespace AspNetClient.Controllers
             this.subjectManager = subjectManager; 
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index(int? id)
         {
-            return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(id)));
+            if(id.HasValue) return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(id.Value)));
+            else return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(1)));
         }
 
         public IActionResult Settings()
