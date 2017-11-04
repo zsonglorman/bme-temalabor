@@ -81,7 +81,7 @@
                         </controls:DataGrid.ItemDetailsTemplate>
                     </controls:DataGrid>-->
 
-                    <tg:RadDataGrid UserEditMode="Inline" ItemsSource="{x:Bind ViewModel.SubjectAndGradeSource}" AutoGenerateColumns="False" ColumnDataOperationsMode="Flyout" ColumnResizeHandleDisplayMode="Always">
+                    <tg:RadDataGrid Name="SubjectPerSemesterGrid" UserEditMode="Inline" ItemsSource="{x:Bind ViewModel.SubjectAndGradeSource}" AutoGenerateColumns="False" ColumnDataOperationsMode="Flyout" ColumnResizeHandleDisplayMode="Always">
                         <tg:RadDataGrid.Columns>
                             <tg:DataGridTextColumn PropertyName="Name" Header="Tárgynév" CanUserEdit="False"/>
                             <tg:DataGridNumericalColumn PropertyName="Credit" Header="Kredit" CanUserEdit="False"/>

@@ -29,7 +29,7 @@
             <!--<tg:RadDataGrid ColumnDataOperationsMode="Flyout" x:Name="grid" ItemsSource="{x:Bind ViewModel.SubjectSource}" DoubleTapped="grid_DoubleTapped"
                             ColumnResizeHandleDisplayMode="Always" CanUserChooseColumns="True" PointerMoved="grid_PointerMoved"> -->
 
-            <tg:RadDataGrid ColumnDataOperationsMode="Flyout" AutoGenerateColumns="False" ItemsSource="{x:Bind ViewModel.SubjectSource}"
+            <tg:RadDataGrid Name="EnrollableGrid" ColumnDataOperationsMode="Flyout" AutoGenerateColumns="False" ItemsSource="{x:Bind ViewModel.SubjectSource}"
                              PointerMoved="grid_PointerMoved">
                 <tg:RadDataGrid.Columns>
                     <tg:DataGridNumericalColumn PropertyName="Id" Header="ID" ></tg:DataGridNumericalColumn>
