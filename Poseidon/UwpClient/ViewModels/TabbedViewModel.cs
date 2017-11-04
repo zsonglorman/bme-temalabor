@@ -14,7 +14,7 @@ namespace UwpClient.ViewModels
         {
         }
 
-        public ObservableCollection<SubjectWithGrades> GradeSource
+        public ObservableCollection<SubjectWithGrade> GradeSource
         {
             get
             {

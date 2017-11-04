@@ -6,6 +6,8 @@ namespace Mocks.Factory
 {
     public class MockSubjectManager : ISubjectManager
     {
+        // TODO tárolja magának a tárgyakat, hogy a változásokat tudjuk követni (törlés, módosítás, insert)
+
         public List<Subject> GetSubjects()
         {
             return new List<Subject>()
@@ -33,26 +35,19 @@ namespace Mocks.Factory
             };
         }
 
-        public List<SubjectWithGrades> GetSubjectsWithGradesOfSemester(int semester)
+        public List<SubjectWithGrade> GetSubjectsWithGradesOfSemester(int semester)
         {
             var subject1 = new Subject(1, "Teszt tárgy", "ABC123", 4, 1, "Teszt Elek");
 
-            var grades1 = new List<Grade>()
-            {                
-                new Grade(1, 1, 1, true, false, 1),
-                new Grade(1, 1, 2, true, true, 4)
-            };
+            var grade1 = new Grade(1, 1, 1, true, false, 1);
 
             var subject2 = new Subject(2, "Elgondolkodtató tárgy", "DEF456", 5, 2, "Prof János");
-            var grades2 = new List<Grade>()
-            {
-                new Grade(1, 2, 1, true, true, 5)
-            };
+            var grade2 = new Grade(1, 2, 1, true, true, 5);
 
-            var subjectsWithGrades = new List<SubjectWithGrades>
+            var subjectsWithGrades = new List<SubjectWithGrade>
             {
-                new SubjectWithGrades(subject1, grades1),
-                new SubjectWithGrades(subject2, grades2)
+                new SubjectWithGrade(subject1, grade1),
+                new SubjectWithGrade(subject2, grade2)
             };
 
             return subjectsWithGrades;
@@ -79,6 +74,11 @@ namespace Mocks.Factory
         }
 
         public void DeleteGradeOfSubject(Grade grade)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SubjectWithGrade> GetSubjectsWithGrades()
         {
             throw new NotImplementedException();
         }
