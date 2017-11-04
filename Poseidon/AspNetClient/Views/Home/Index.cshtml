@@ -57,7 +57,7 @@
                                 <td>@i.Grade.Signature</td>
                                 <td>@i.Grade.ReceivedGrade</td>
                                 <!--<td class="text-center"><a asp-action="Edit" asp-controller="Home" asp-route-id="@i.Subject.Id" class="btn btn-sm btn-success">Módosítás</a></td>-->
-                                <td class="text-center"><a onclick="getPartialView(@i.Subject.Id)" class="btn btn-sm btn-success">Módosítás</a></td>
+                                <td class="text-center"><a onclick="getPartialView(@i.SubjectID,&quot;@Html.Raw(Url.Action("Modify", "Subjects", new { }))&quot;)" class="btn btn-sm btn-success">Módosítás</a></td>
                                 
                             </tr>
                         }
@@ -91,19 +91,5 @@
 </div>
 
 @section Scripts{
-    <script>
-        function getPartialView(id){
-            var url = "@Html.Raw(Url.Action("Modify", "Subjects", new { }))";
-            url = url.concat("/" + id);
-            $.ajax({
-                url: url,
-                type: "GET",
-                cache: false,
-                success: function(result){
-                    $("#SubjectModify").html(result)
-                }
-            });
-            $("#myModal").modal();
-        }
-    </script>
+    <script src="~/js/EditModulPopUp.js" type="text/javascript" language="javascript"></script>
 }

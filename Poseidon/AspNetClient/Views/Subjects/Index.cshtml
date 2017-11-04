@@ -33,7 +33,7 @@
                             <td>@i.Code</td>
                             <td>@i.ResponsibleProfessor</td>
                             <!--<td class="text-center"><a asp-action="Register" asp-controller="Subjects" asp-route-id="@i.Id" class="btn btn-sm btn-success">Felvétel</a></td>-->
-                            <td class="text-center"><a onclick="getPartialView(@i.Id)" class="btn btn-sm btn-success">Felvétel</a></td>
+                            <td class="text-center"><a onclick="getPartialView(@i.Id,&quot;@Html.Raw(Url.Action("Register", "Subjects", new { }))&quot;)" class="btn btn-sm btn-success">Felvétel</a></td>
                         </tr>
                     }
                 </tbody>
@@ -81,41 +81,7 @@
     </div>
 </div>
 
+
 @section Scripts{
-    <script>
-        function getPartialView(id){
-            var url = "@Html.Raw(Url.Action("Register", "Subjects", new { }))";
-            url = url.concat("/" + id);
-            $.ajax({
-                url: url,
-                type: "GET",
-                cache: false,
-                success: function(result){
-                    $("#SubjectDetails").html(result)
-                }
-            });
-            $("#sign").attr("checked", false);
-            $("#mark").val('1').attr("disabled", true);
-            $("#myModal").modal();
-            //document.getElementById("myModal").setAttribute("style", "display:normal");
-        }
-        $("#sign").click(function () {
-            $("#mark").attr("disabled", !this.checked);
-            $("#mark").val("1");
-
-        });
-
-        function Submit() {
-            if (($("#mark").val() < 1 )|| ($("#mark").val() > 5)) {
-
-                $("#markForm").addClass("has-error");
-                return;
-            }
-
-            $("#myModal").modal('hide');
-            $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
-                $("#SuccessModal").slideUp(200);
-            });
-        }
-    </script>
+    <script src="~/js/Subjects_Index.js" type="text/javascript" language="javascript"></script>
 }
