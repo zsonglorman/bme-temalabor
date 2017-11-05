@@ -43,7 +43,10 @@ namespace AspNetClient.Controllers
 
         public IActionResult Modify(int? id)
         {
-            return PartialView(id);
+            foreach (Subject i in subjectManager.GetSubjects())
+                if (i.Id == id)
+                    return PartialView(new SubjectViewModel(i));
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         public IActionResult Error()
@@ -68,35 +71,6 @@ namespace AspNetClient.Controllers
 
             //return null;
         }
-        [HttpPost]
-        public IActionResult Delete()
-        {
-            int id = int.Parse(Request.Form["id"]);
-            bool sign = false;
-            int mark = 1;
-            int semester = int.Parse(Request.Form["semester"]);
-
-            bool passed = false;
-            if ((int)mark > 1 && sign == true)
-                passed = true;
-            Grade grade = new Grade(0, id, semester, sign, passed, mark);
-            //subjectManager.DeleteGradeOfSubject(grade);
-            return null;
-        }
-        [HttpPost]
-        public IActionResult Update()
-        {
-            int id = int.Parse(Request.Form["id"]);
-            bool sign = bool.Parse(Request.Form["sign"]);
-            int mark = int.Parse(Request.Form["mark"]);
-            int semester = int.Parse(Request.Form["semester"]);
-
-            bool passed = false;
-            if ((int)mark > 1 && sign == true)
-                passed = true;
-            Grade grade = new Grade(0, id, semester, sign, passed, mark);
-            //subjectManager.UpdateGradeOfSubject(grade);
-            return null;
-        }
+        
     }
 }

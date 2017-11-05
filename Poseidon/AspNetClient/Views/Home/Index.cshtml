@@ -58,7 +58,7 @@
                                     <td>@i.Subject.Credit</td>
                                     <td>@i.Grade.Signature</td>
                                     <td>@i.Grade.ReceivedGrade</td>
-                                    <td class="text-center"><a onclick="getPartialView(@i.Subject.Id)" class="btn btn-sm btn-success">Módosítás</a></td>
+                                    <td class="text-center"><a onclick="getPartialView(@i.Subject.Id,&quot;@Html.Raw(Url.Action("Modify", "Subjects", new { }))&quot;)" class="btn btn-sm btn-success">Módosítás</a></td>
                                 
                                 </tr>
                             }
@@ -83,8 +83,8 @@
                 <div id="SubjectModify">
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Submit()">Módosítás</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Törlés</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Update()">Módosítás</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Delete()">Törlés</button>
                 </div>
             </div>
 
@@ -93,19 +93,5 @@
 </div>
 
 @section Scripts{
-    <script>
-        function getPartialView(id){
-            var url = "@Html.Raw(Url.Action("Modify", "Subjects", new { }))";
-            url = url.concat("/" + id);
-            $.ajax({
-                url: url,
-                type: "GET",
-                cache: false,
-                success: function(result){
-                    $("#SubjectModify").html(result)
-                }
-            });
-            $("#myModal").modal();
-        }
-    </script>
+    <script src="~/js/Home_Index.js" type="text/javascript" language="javascript"></script>
 }
