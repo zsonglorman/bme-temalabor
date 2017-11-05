@@ -31,9 +31,8 @@
                             <td>@i.Credit</td>
                             <td>@i.RecommendedSemester</td>
                             <td>@i.Code</td>
-                            <td>@i.ResponsibleProfessor</td>
-                            <!--<td class="text-center"><a asp-action="Register" asp-controller="Subjects" asp-route-id="@i.Id" class="btn btn-sm btn-success">Felvétel</a></td>-->
-                            <td class="text-center"><a onclick="getPartialView(@i.Id,&quot;@Html.Raw(Url.Action("Modify", "Subjects", new { }))&quot;)" class="btn btn-sm btn-success">Módosítás</a></td>
+                            <td>@i.ResponsibleProfessor</td>       
+                            <td class="text-center"><a onclick="getPartialView(@i.Id,&quot;@Html.Raw(Url.Action("Register", "Subjects", new { }))&quot;)" class="btn btn-sm btn-success">Felvétel</a></td>
                         </tr>
                     }
                 </tbody>
