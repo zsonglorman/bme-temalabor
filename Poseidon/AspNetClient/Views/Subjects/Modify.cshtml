@@ -1,15 +1,15 @@
-﻿@model int
+﻿@model SubjectViewModel
 @{
     ViewData["Title"] = "Modify";
 }
 
-<p>Tst @Model</p>
+<p id="id" hidden>@Model.subject.Id</p>
 <div style="padding: 10px">
-    <h2>Tárgynév: **</h2>
-    <h3>Tárgykód: **</h3>
-    <p>Kredit: **</p>
-    <p>Tárgyfelelős: **</p>
-    <p>Ajánlott félév: **</p>
+    <h2>Tárgynév: @Model.subject.Name</h2>
+    <h3>Tárgykód: @Model.subject.Code</h3>
+    <p>Kredit: @Model.subject.Credit</p>
+    <p>Tárgyfelelős: @Model.subject.ResponsibleProfessor</p>
+    <p>Ajánlott félév: @Model.subject.RecommendedSemester</p>
 
 </div>
 <div class="modal-footer">
@@ -19,24 +19,6 @@
     </div>
 </div>
 
-@section Scripts{ 
-    <script>
-        $("#sign").click(function () {
-            $("#mark").attr("disabled", !this.checked);
-            $("#mark").val("1");
-
-        });
-        function Submit() {
-            if (($("#mark").val() < 1) || ($("#mark").val() > 5)) {
-
-                $("#markForm").addClass("has-error");
-                return;
-            }
-
-            $("#myModal").modal('hide');
-            $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
-                $("#SuccessModal").slideUp(200);
-            });
-        }
-    </script>
+@section Scripts{
+    <script src="~/js/Home_Modify.js" type="text/javascript" language="javascript"></script>
 }

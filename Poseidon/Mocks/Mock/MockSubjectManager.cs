@@ -80,7 +80,19 @@ namespace Mocks.Factory
 
         public List<SubjectWithGrade> GetSubjectsWithGrades()
         {
-            throw new NotImplementedException();
+            var subject1 = new Subject(1, "Teszt tárgy", "ABC123", 4, 1, "Teszt Elek");
+
+            var grade1 = new Grade(1, 1, 1, true, false, 1);
+
+            
+
+            var subjectsWithGrades = new List<SubjectWithGrade>
+            {
+                new SubjectWithGrade(subject1, grade1)
+            };
+
+            return subjectsWithGrades;
+
         }
     }
 }
