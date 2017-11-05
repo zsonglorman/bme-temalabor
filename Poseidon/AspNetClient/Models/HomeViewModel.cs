@@ -8,10 +8,10 @@ namespace AspNetClient.Models
 {
     public class HomeViewModel
     {
-            public IList<Interfaces.SubjectWithGrade> SubjectWithGrade { get; private set; }
+        public IList<Interfaces.SubjectWithGrade> SubjectWithGrade { get; private set; }
+        public int Semester { get; set; }
 
-
-            public HomeViewModel(List<SubjectWithGrade> subjectWithGrade)
+        public HomeViewModel(List<SubjectWithGrade> subjectWithGrade)
             {
                 if (subjectWithGrade != null)
                     SubjectWithGrade = subjectWithGrade;

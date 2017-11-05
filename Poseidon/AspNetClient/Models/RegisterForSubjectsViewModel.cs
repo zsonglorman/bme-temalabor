@@ -11,14 +11,13 @@ namespace AspNetClient.Models
 
         public IList<Interfaces.Subject> Subjects { get; private set; }
 
-
         public RegisterForSubjectsViewModel(List<Subject> subjects)
         {
             if (subjects != null)
                 Subjects = subjects;
             else
                 Subjects = new List<Subject>();
-        }
+        }   
 
 
     }
