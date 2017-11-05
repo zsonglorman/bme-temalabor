@@ -103,7 +103,7 @@
 
                     <telerikChart:RadCartesianChart x:Name="radChart">
                         <telerikChart:RadCartesianChart.HorizontalAxis>
-                            <telerikChart:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">
+                            <telerikChart:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" LabelFormat="{}{0}.félév">
                                 <telerikChart:CategoricalAxis.LineStyle>
                                     <Style TargetType="Line">
                                         <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
@@ -117,7 +117,7 @@
                             </telerikChart:CategoricalAxis>
                         </telerikChart:RadCartesianChart.HorizontalAxis>
                         <telerikChart:RadCartesianChart.VerticalAxis>
-                            <telerikChart:LinearAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" >
+                            <telerikChart:LinearAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" Title="Érdemjegy">
                                 <telerikChart:LinearAxis.LineStyle>
                                     <Style TargetType="Line">
                                         <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>

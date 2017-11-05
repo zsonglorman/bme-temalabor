@@ -1,7 +1,7 @@
 ﻿using System;
 
 using UwpClient.ViewModels;
-
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace UwpClient.Views
@@ -18,6 +18,8 @@ namespace UwpClient.Views
         public ChartPage()
         {
             InitializeComponent();
+            // CredtiPerSemesterChart.VerticalAxis.TitleTemplate = this.Resources["19970427"] as DataTemplate;
+            //CredtiPerSemesterChart.VerticalAxis.Style = this.Resources["owntitlestyle"] as Style;
         }
     }
 }
