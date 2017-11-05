@@ -30,7 +30,7 @@
             <ComboBoxItem Content="2.félév" Name="SecondSemester"/>
             <ComboBoxItem Content="3.félév" Name="ThirdSemester"/>
             <ComboBoxItem Content="4.félév" Name="FourthSemester"/>
-            <ComboBoxItem Content="5.félév" Name="FifthSemester" IsSelected="True"/>
+            <ComboBoxItem Content="5.félév" Name="FifthSemester"/>
             <ComboBoxItem Content="6.félév" Name="SixthSemester"/>
             <ComboBoxItem Content="7.félév" Name="SeventhSemester"/>
         </ComboBox>
@@ -101,7 +101,7 @@
                     Place your content here.
                     -->
 
-                    <telerikChart:RadCartesianChart x:Name="radChart">
+                    <telerikChart:RadCartesianChart x:Name="GradePerSemesterGrid">
                         <telerikChart:RadCartesianChart.HorizontalAxis>
                             <telerikChart:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" LabelFormat="{}{0}.félév">
                                 <telerikChart:CategoricalAxis.LineStyle>
@@ -130,7 +130,7 @@
                                 </telerikChart:LinearAxis.MajorTickStyle>
                             </telerikChart:LinearAxis>
                         </telerikChart:RadCartesianChart.VerticalAxis>
-                        <telerikChart:BarSeries ItemsSource="{x:Bind ViewModel.GradeSample}" ShowLabels="True">
+                        <telerikChart:BarSeries Name="ChartContent" ItemsSource="{x:Bind ViewModel.GradeSample}" ShowLabels="True">
                             <telerikChart:BarSeries.CategoryBinding>
                                 <telerikChart:PropertyNameDataPointBinding PropertyName="Semester" />
                             </telerikChart:BarSeries.CategoryBinding>

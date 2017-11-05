@@ -33,14 +33,23 @@ namespace UwpClient.Views
 
         private void Delete_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            Subject torlendo = null;
+
             foreach (var item in ViewModel.SubjectSource)
             {
                 if(item.Id == row.Id)
                 {
-                    ViewModel.SubjectSource.Remove(item);
-                    ViewModel.RaisePropertyChanged();
+                    torlendo = item;
                 }
             }
+
+            //TODO valahogy kiszedni az elemet és frissíteni a gridet
+            ViewModel.SubjectSource.Remove(torlendo);
+            EnrolledGrid.UpdateLayout();
+            //ViewModel.RaisePropertyChanged();
+            //EnrolledGrid.InvalidateArrange();
+            //EnrolledGrid.InvalidateMeasure();
+
         }
     }
 }

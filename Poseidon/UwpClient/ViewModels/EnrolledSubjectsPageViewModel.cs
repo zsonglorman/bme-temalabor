@@ -11,11 +11,19 @@ namespace UwpClient.ViewModels
 {
     public class EnrolledSubjectsPageViewModel : ViewModelBase
     {
+        public EnrolledSubjectsPageViewModel()
+        {
+            subjectSource = SubjectService.GetGridSubjectData();
+        }
+
+        public ObservableCollection<Subject> subjectSource;
+
         public ObservableCollection<Subject> SubjectSource
         {
             get
             {
-                return SubjectService.GetGridSubjectData();
+                return subjectSource;
+                //return SubjectService.GetGridSubjectData();
             }
         }
     }
