@@ -18,15 +18,22 @@ namespace AspNetClient.Controllers
             this.subjectManager = subjectManager; 
         }
 
+        public IActionResult Modify(int? id)
+        {
+            foreach (SubjectWithGrade i in subjectManager.GetSubjectsWithGradesOfSemester(HomeViewModel.Semester))
+                if (i.Subject.Id == id)
+                    return PartialView(new ModifySubjectViewModel(i));
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
         public IActionResult Index(int? id)
         {
-            if(id.HasValue) return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(id.Value)));
-            else return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(1)));
+            if(id.HasValue) return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(id.Value), id.Value));
+            else return View(new HomeViewModel(subjectManager.GetSubjectsWithGradesOfSemester(1), 1));
         }
 
         public IActionResult Settings()
         {
-
             return View();
         }
 
@@ -43,19 +50,19 @@ namespace AspNetClient.Controllers
         public IActionResult Delete()
         {
             int id = int.Parse(Request.Form["id"]);
-            bool sign = false;
-            int mark = 1;
+            bool sign = bool.Parse(Request.Form["sign"]);
+            int mark = int.Parse(Request.Form["mark"]);
             int semester = int.Parse(Request.Form["semester"]);
 
             bool passed = false;
             if ((int)mark > 1 && sign == true)
                 passed = true;
-            Grade grade = new Grade(0, id, semester, sign, passed, mark);
-            //subjectManager.DeleteGradeOfSubject(grade);
+            Grade grade = new Grade(1, id, semester, sign, passed, mark);
+            subjectManager.DeleteGradeOfSubject(grade);
             return null;
         }
         [HttpPost]
-        public IActionResult Update()
+        public IActionResult Modify()
         {
             int id = int.Parse(Request.Form["id"]);
             bool sign = bool.Parse(Request.Form["sign"]);
@@ -65,8 +72,9 @@ namespace AspNetClient.Controllers
             bool passed = false;
             if ((int)mark > 1 && sign == true)
                 passed = true;
-            Grade grade = new Grade(0, id, semester, sign, passed, mark);
-            //subjectManager.UpdateGradeOfSubject(grade);
+            Grade grade = new Grade(1, id, semester, sign, passed, mark);
+         
+            subjectManager.UpdateGradeOfSubject(grade);
             return null;
         }
     }

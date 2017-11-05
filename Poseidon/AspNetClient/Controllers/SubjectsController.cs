@@ -23,12 +23,11 @@ namespace AspNetClient.Controllers
             ViewData.Add("Search", search);
             if (search != null && search.Length >= MIN_SEARCH_LENGTH)
             {
-                return View(new RegisterForSubjectsViewModel(
-                        subjectManager.SearchSubjects(search), subjectManager.GetSubjectsWithGrades()));
+                return View(new RegisterForSubjectsViewModel(subjectManager.SearchSubjects(search)));
             }
             else
             {
-                return View(new RegisterForSubjectsViewModel(subjectManager.GetSubjects(), subjectManager.GetSubjectsWithGrades()));
+                return View(new RegisterForSubjectsViewModel(subjectManager.GetSubjects()));
             }
         }
 
@@ -41,21 +40,13 @@ namespace AspNetClient.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Modify(int? id)
-        {
-            foreach (Subject i in subjectManager.GetSubjects())
-                if (i.Id == id)
-                    return PartialView(new SubjectViewModel(i));
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
         [HttpPost]
-        public IActionResult Insert()
+        public IActionResult Register()
         {
             int id = int.Parse(Request.Form["id"]);
             bool sign = bool.Parse(Request.Form["sign"]);
@@ -65,11 +56,9 @@ namespace AspNetClient.Controllers
             bool passed = false;
             if ((int)mark > 1 && sign == true)
                 passed = true;
-            Grade grade = new Grade(0, id, semester, sign, passed, mark);
-            //subjectManager.InsertGradeOfSubject(grade);
+            Grade grade = new Grade(1, id, semester, sign, passed, mark);
+            subjectManager.InsertGradeOfSubject(grade);
             return Content("Success");
-
-            //return null;
         }
         
     }

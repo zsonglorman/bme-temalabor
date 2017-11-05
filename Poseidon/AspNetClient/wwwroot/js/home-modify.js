@@ -1,30 +1,24 @@
-﻿function getPartialView(id,url) {
-    url = url.concat("/" + id);
-    $.ajax({
-        url: url,
-        type: "GET",
-        cache: false,
-        success: function (result) {
-            $("#SubjectModify").html(result)
-        }
-    });
-    $("#myModal").modal();
-}
+﻿
+$("#sign").click(function () {
+    $("#mark").attr("disabled", !this.checked);
+    $("#mark").val("1");
 
-function Delete() {
+});
+
+function Submit() {
     if (($("#mark").val() < 1) || ($("#mark").val() > 5)) {
 
         $("#markForm").addClass("has-error");
         return;
     }
     var id = $("#id").text();
+    var semester = $("#semester").text();
     var sign = $("#sign").prop("checked");
     var mark = $("#mark").val();
-    var semester = 1;//$("#semester").val();
     var params = { id, sign, mark, semester };
 
     $.ajax({
-        url: "Subjects/Delete",
+        url: "Home/Modify",
         type: "POST",
         data: "id=" + id + "&sign=" + sign + "&mark=" + mark + "&semester=" + semester,
         success: function (data) { $("#ResultMessage").text(data); },
@@ -36,7 +30,7 @@ function Delete() {
     });
 }
 
-function Update() {
+function Delete() {
     if (($("#mark").val() < 1) || ($("#mark").val() > 5)) {
 
         $("#markForm").addClass("has-error");
@@ -45,11 +39,11 @@ function Update() {
     var id = $("#id").text();
     var sign = $("#sign").prop("checked");
     var mark = $("#mark").val();
-    var semester = 1;//$("#semester").val();
+    var semester = $("#semester").text();
     var params = { id, sign, mark, semester };
 
     $.ajax({
-        url: "Subjects/Update",
+        url: "Home/Delete",
         type: "POST",
         data: "id=" + id + "&sign=" + sign + "&mark=" + mark + "&semester=" + semester,
         success: function (data) { $("#ResultMessage").text(data); },

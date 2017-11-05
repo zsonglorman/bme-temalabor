@@ -8,12 +8,10 @@ namespace AspNetClient.Models
 {
     public class SubjectViewModel
     {
-
         public Subject subject { get; private set; }
         public SubjectViewModel(Subject subject)
         {
             this.subject = subject;
         }
-
     }
 }

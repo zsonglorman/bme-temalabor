@@ -45,8 +45,7 @@
                                     <td>@i.Subject.Credit</td>
                                     <td>@i.Grade.Signature</td>
                                     <td>@i.Grade.ReceivedGrade</td>
-                                    <td class="text-center"><a onclick="getPartialView(@i.Subject.Id,&quot;@Html.Raw(Url.Action("Modify", "Subjects", new { }))&quot;)" class="btn btn-sm btn-success">Módosítás</a></td>
-                                
+                                    <td class="text-center"><a onclick="getPartialView(@i.Subject.Id,&quot;@Html.Raw(Url.Action("Modify", "Home", new { }))&quot;)" class="btn btn-sm btn-success">Módosítás</a></td>
                                 </tr>
                             }
                         }
@@ -80,5 +79,5 @@
 </div>
 
 @section Scripts{
-    <script src="~/js/Home_Index.js" type="text/javascript" language="javascript"></script>
+    <script src="~/js/home-index.js" type="text/javascript" language="javascript"></script>
 }

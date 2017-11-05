@@ -14,8 +14,6 @@ function getPartialView(id,url) {
             $("#SubjectDetails").html(result)
         }
     });
-    $("#sign").attr("checked", false);
-    $("#mark").val('1').attr("disabled", true);
     $("#myModal").modal();
     //document.getElementById("myModal").setAttribute("style", "display:normal");
 }
@@ -29,11 +27,11 @@ function Submit() {
     var id = $("#id").text();
     var sign = $("#sign").prop("checked");
     var mark = $("#mark").val();
-    var semester = 1;//$("#semester").val();
+    var semester = $("#semester").val();
     var params = { id,sign,mark, semester };
 
     $.ajax({
-        url: "Subjects/Insert",
+        url: "Subjects/Register",
         type: "POST",
         data: "id=" + id + "&sign=" + sign + "&mark=" + mark + "&semester=" + semester,
         success: function (data) { $("#ResultMessage").text(data); },
