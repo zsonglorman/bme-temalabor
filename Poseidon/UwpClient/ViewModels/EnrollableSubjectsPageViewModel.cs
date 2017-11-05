@@ -12,21 +12,20 @@ namespace UwpClient.ViewModels
 {
     public class EnrollableSubjectsPageViewModel : ViewModelBase
     {
-        //public ObservableCollection<SampleOrder> Source
-        //{
-        //    get
-        //    {
-        //        // TODO WTS: Replace this with your actual data
-        //        return SampleDataService.GetGridSampleData();
-        //    }
-        //}
+        public EnrollableSubjectsPageViewModel()
+        {
+            subjectSource = SubjectService.GetGridSubjectData();
+        }
+
+        public ObservableCollection<Subject> subjectSource;
 
         public ObservableCollection<Subject> SubjectSource
         {
             get
             {
                 // TODO WTS: Replace this with your actual data
-                return SubjectService.GetGridSubjectData();
+                return subjectSource;
+                //return SubjectService.GetGridSubjectData();
             }
         }
 

@@ -45,6 +45,13 @@
                             </DataTemplate>
                         </tg:DataGridTemplateColumn.CellContentTemplate>
                     </tg:DataGridTemplateColumn>
+                    <tg:DataGridTemplateColumn>
+                        <tg:DataGridTemplateColumn.CellContentTemplate>
+                            <DataTemplate>
+                                <Button Name="Enroll" Content="Felvesz" HorizontalAlignment="Center" Click="Enroll_Click"></Button>
+                            </DataTemplate>
+                        </tg:DataGridTemplateColumn.CellContentTemplate>
+                    </tg:DataGridTemplateColumn>
                 </tg:RadDataGrid.Columns>
                  <tg:RadDataGrid.Commands>
                     <gridCommands:DataGridUserCommand Id="CellTap" />

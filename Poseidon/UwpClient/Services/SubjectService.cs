@@ -15,6 +15,8 @@ namespace UwpClient.Services
 
         private static IEnumerable<Subject> AllOrders()
         {
+            Mocks.Factory.SubjectManagerFactory.Mocking = false;
+
             Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
 
             ObservableCollection<Subject> data = new ObservableCollection<Subject>(subjectManager.GetSubjects());
@@ -25,6 +27,8 @@ namespace UwpClient.Services
         public static ObservableCollection<SubjectWithGrade> GetSubjectsBySemester(int semester)
         {
             //TODO:  elkérni a jó subjectmanagert és meghívni rajta az Interfacesben lévő fgv-t ha kész
+            Mocks.Factory.SubjectManagerFactory.Mocking = false;
+
             Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
 
             ObservableCollection<SubjectWithGrade> data = new ObservableCollection<SubjectWithGrade>(subjectManager.GetSubjectsWithGradesOfSemester(semester));
@@ -63,6 +67,8 @@ namespace UwpClient.Services
 
         public static ObservableCollection<Course> GetCourseBySubject(int subjectid)
         {
+            Mocks.Factory.SubjectManagerFactory.Mocking = false;
+
             Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
 
             ObservableCollection<Course> data = new ObservableCollection<Course>(subjectManager.GetCoursesOfSubject(subjectid));

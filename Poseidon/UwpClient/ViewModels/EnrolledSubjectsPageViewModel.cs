@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight;
 using UwpClient.Services;
 using Mocks;
 using Interfaces;
+using UwpClient.Models;
 
 namespace UwpClient.ViewModels
 {
@@ -26,5 +27,6 @@ namespace UwpClient.ViewModels
                 //return SubjectService.GetGridSubjectData();
             }
         }
+
     }
 }

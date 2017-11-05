@@ -40,6 +40,7 @@ namespace UwpClient.Views
             else if(name != null && name.Equals("SecondSemester"))
             {
                 //TODO: meghívni az adatbázisból lehívó fgv-t az adott félévre, frissíteni a gridet
+                //ViewModel.SubjectAndGradeSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(2));
                 SubjectPerSemesterGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(2));
                 SubjectPerSemesterGrid.InvalidateArrange();
                 SubjectPerSemesterGrid.UpdateLayout();
