@@ -69,8 +69,8 @@
                 <div id="SubjectModify">
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Update()">Módosítás</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Delete()">Törlés</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Submit(&quot;@Html.Raw(Url.Action("Modify", "Home", new { }))&quot;)">Módosítás</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Delete(&quot;@Html.Raw(Url.Action("Delete", "Home", new { }))&quot;)">Törlés</button>
                 </div>
             </div>
 

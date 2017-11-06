@@ -2,10 +2,9 @@
 $("#sign").click(function () {
     $("#mark").attr("disabled", !this.checked);
     $("#mark").val("1");
-
 });
 
-function Submit() {
+function Submit(url) {
     if (($("#mark").val() < 1) || ($("#mark").val() > 5)) {
 
         $("#markForm").addClass("has-error");
@@ -18,7 +17,7 @@ function Submit() {
     var params = { id, sign, mark, semester };
 
     $.ajax({
-        url: "Home/Modify",
+        url: url,
         type: "POST",
         data: "id=" + id + "&sign=" + sign + "&mark=" + mark + "&semester=" + semester,
         success: function (data) { $("#ResultMessage").text(data); },
@@ -28,9 +27,10 @@ function Submit() {
     $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
         $("#SuccessModal").slideUp(200);
     });
+    
 }
 
-function Delete() {
+function Delete(url) {
     if (($("#mark").val() < 1) || ($("#mark").val() > 5)) {
 
         $("#markForm").addClass("has-error");
@@ -43,7 +43,7 @@ function Delete() {
     var params = { id, sign, mark, semester };
 
     $.ajax({
-        url: "Home/Delete",
+        url: url,
         type: "POST",
         data: "id=" + id + "&sign=" + sign + "&mark=" + mark + "&semester=" + semester,
         success: function (data) { $("#ResultMessage").text(data); },
