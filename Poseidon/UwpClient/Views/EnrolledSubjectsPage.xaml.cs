@@ -1,6 +1,9 @@
 ﻿using Interfaces;
 using System;
+using System.Collections.ObjectModel;
 using Telerik.UI.Xaml.Controls.Grid;
+using UwpClient.Models;
+using UwpClient.Services;
 using UwpClient.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml.Controls;
@@ -36,6 +39,22 @@ namespace UwpClient.Views
         {
 
             EnrollSubjectDeleteDialog();
+            //Mocks.Factory.SubjectManagerFactory.Mocking = false;
+            //ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
+            //ObservableCollection<SubjectWithGrade> collection = new ObservableCollection<SubjectWithGrade>(subjectManager.GetSubjectsWithGrades());
+            //ObservableCollection<SubjectAndGrade> observable = SubjectService.GetTabbedPage(collection);
+            //SubjectAndGrade temp = null;
+            //foreach (var item in observable)
+            //{
+            //    if(item.Id == row.Id)
+            //    {
+            //        //Subjectből  -> SubjectAndGrade-t kell csinálni
+            //        //temp = row;
+            //    }
+            //}
+            //TODO temp Grade részét kell ide megadni
+            //subjectManager.DeleteGradeOfSubject(temp);
+
             //Subject torlendo = null;
 
             //foreach (var item in ViewModel.SubjectSource)
@@ -76,28 +95,28 @@ namespace UwpClient.Views
             }
         }
 
-            //protected override void OnNavigatedTo(NavigationEventArgs e)
-            //{
-            //    var parameters = e.Parameter as Subject;
-            //    //int id = parameters.Id;
-            //    //String name = parameters.Name;
-            //    //String code = parameters.Code;
-            //    //int credit = parameters.Credit;
-            //    //int recommendedsemester = parameters.RecommendedSemester;
-            //    //String responsibleprof = parameters.ResponsibleProfessor;
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    var parameters = e.Parameter as Subject;
+        //    //int id = parameters.Id;
+        //    //String name = parameters.Name;
+        //    //String code = parameters.Code;
+        //    //int credit = parameters.Credit;
+        //    //int recommendedsemester = parameters.RecommendedSemester;
+        //    //String responsibleprof = parameters.ResponsibleProfessor;
 
-            //    bool unique = true;
+        //    bool unique = true;
 
-            //    //Kell hogy 1 évbe csak egyszer lehessen felvenni 1 tárgyat
-            //    /*foreach (var item in ViewModel.SubjectSource)
-            //    {
-            //        if(id == item.Id)
-            //        {
-            //            unique = false;
-            //        }
-            //    }*/
+        //    //Kell hogy 1 évbe csak egyszer lehessen felvenni 1 tárgyat
+        //    /*foreach (var item in ViewModel.SubjectSource)
+        //    {
+        //        if(id == item.Id)
+        //        {
+        //            unique = false;
+        //        }
+        //    }*/
 
-            //    if(unique == true) { ViewModel.subjectSource.Add(parameters); }
-            //}
-        }
+        //    if (unique == true) { ViewModel.subjectSource.Add(parameters); }
+        //}
+    }
 }
