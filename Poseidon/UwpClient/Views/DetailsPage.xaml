@@ -30,21 +30,29 @@
             <ListView Grid.Column="0" Name="DetailsListBox" VerticalAlignment="Top" HorizontalAlignment="Center"
                      ItemsSource="{Binding Subject}" SelectedItem="{Binding SelectedSubject, Mode=TwoWay}">
                 <ListView.Items>
-                 <ListViewItem Content="Name"/>
-                <ListViewItem Content="Code"/>
-                <ListViewItem Content="Credit"/>
-                <ListViewItem Content="RecommendedSemester"/>
-                <ListViewItem Content="ResponsibleProfessor"/>
+                    <ListViewItem Content="Name"/>
+                    <ListViewItem Content="Code"/>
+                    <ListViewItem Content="Credit"/>
+                    <ListViewItem Content="RecommendedSemester"/>
+                    <ListViewItem Content="ResponsibleProfessor"/>
+                    <ListViewItem Content="Location"/>
+                    <ListViewItem Content="Schedule"/>
+                    <ListViewItem Content="Length in minutes"/>
+                    <ListViewItem Content="Couurse type"/>
                 </ListView.Items>
             </ListView>
                <StackPanel Grid.Column="1">
-                <ListView>
+                <ListView Name="DetailsList">
                     <ListView.Items>
-                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.Code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.Credit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.RecommendedSemester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBox IsEnabled="False" Text="{Binding SelectedSubject.ResponsibleProfessor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Name="Name" IsEnabled="False" /> <!--Text="{Binding SelectedSubject.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+                        <TextBox Name="Code" IsEnabled="False" /> <!-- Text="{Binding SelectedSubject.Code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
+                        <TextBox Name="Credit" IsEnabled="False" /> <!-- Text="{Binding SelectedSubject.Credit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
+                        <TextBox Name="RecommendedSemester" IsEnabled="False" /> <!-- Text="{Binding SelectedSubject.RecommendedSemester, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
+                        <TextBox Name="ResponsibleProfessor" IsEnabled="False" /> <!-- Text="{Binding SelectedSubject.ResponsibleProfessor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/> -->
+                        <TextBox Name="Location" IsEnabled="False"/>
+                        <TextBox Name="Schedule" IsEnabled="False"/>
+                        <TextBox Name="LengthInMinutes" IsEnabled="False"/>
+                        <TextBox Name="CourseType" IsEnabled="False"/>
                     </ListView.Items>
                 </ListView>
             </StackPanel>

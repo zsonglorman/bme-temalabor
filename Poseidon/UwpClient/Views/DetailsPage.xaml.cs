@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,11 +28,37 @@ namespace UwpClient.Views
         public DetailsPage()
         {
             this.InitializeComponent();
+                       
         }
 
         private DetailsViewModel detailsViewModel
         {
             get { return DataContext as DetailsViewModel; }
+        }
+
+        //public Subject parameters;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var parameters = e.Parameter as Subject;
+            int id = parameters.Id;
+            String name = parameters.Name;
+            String code = parameters.Code;
+            int credit =  parameters.Credit;
+            int recommendedsemester = parameters.RecommendedSemester;
+            String responsibleprof = parameters.ResponsibleProfessor;
+
+            ObservableCollection <Course> collection = Services.SubjectService.GetCourseBySubject(id);
+
+            Name.Text = name;
+            Code.Text = code;
+            Credit.Text = credit.ToString();
+            RecommendedSemester.Text = recommendedsemester.ToString();
+            ResponsibleProfessor.Text = responsibleprof;
+            Location.Text = collection.First().Location;
+            Schedule.Text = collection.First().Schedule;
+            LengthInMinutes.Text = collection.First().LengthInMinutes.ToString();
+            CourseType.Text = collection.First().CourseType;
+
         }
     }
 }

@@ -30,7 +30,7 @@
             <ComboBoxItem Content="2.félév" Name="SecondSemester"/>
             <ComboBoxItem Content="3.félév" Name="ThirdSemester"/>
             <ComboBoxItem Content="4.félév" Name="FourthSemester"/>
-            <ComboBoxItem Content="5.félév" Name="FifthSemester" IsSelected="True"/>
+            <ComboBoxItem Content="5.félév" Name="FifthSemester"/>
             <ComboBoxItem Content="6.félév" Name="SixthSemester"/>
             <ComboBoxItem Content="7.félév" Name="SeventhSemester"/>
         </ComboBox>
@@ -45,13 +45,12 @@
 
                     <!-- <tg:RadDataGrid ColumnDataOperationsMode="Flyout" x:Name="grid" ItemsSource="{x:Bind ViewModel.Source}" /> -->
 
-                    <controls:DataGrid x:Name="SubjectDataGrid" SelectionMode="Multiple" controls:DataGridExtensions.UseSingleSelectionAndDeselection="true"
+                    <!--<controls:DataGrid x:Name="SubjectDataGrid" SelectionMode="Multiple" controls:DataGridExtensions.UseSingleSelectionAndDeselection="true"
                                        ScrollViewer.IsScrollInertiaEnabled="True"
                                        ScrollViewer.VerticalScrollBarVisibility="Visible"
                                        ScrollViewer.VerticalScrollMode="Enabled"
                                        SelectionChanged="SemesterCombo_SelectionChanged">
-                        <!--ItemsSource="{x:Bind ViewModel.GradeSource}"-->
-                                       
+
                         <controls:DataGrid.Columns>
                             <controls:DataGridTextColumn
                                 Width="200" Header="Tárgynév" CanSort="True" Binding="{Binding Tárgynév}"/>
@@ -80,7 +79,17 @@
                                 </StackPanel>
                             </DataTemplate>
                         </controls:DataGrid.ItemDetailsTemplate>
-                    </controls:DataGrid>
+                    </controls:DataGrid>-->
+
+                    <tg:RadDataGrid Name="SubjectPerSemesterGrid" UserEditMode="Inline" ItemsSource="{x:Bind ViewModel.SubjectAndGradeSource}" AutoGenerateColumns="False" ColumnDataOperationsMode="Flyout" ColumnResizeHandleDisplayMode="Always">
+                        <tg:RadDataGrid.Columns>
+                            <tg:DataGridTextColumn PropertyName="Name" Header="Tárgynév" CanUserEdit="False"/>
+                            <tg:DataGridNumericalColumn PropertyName="Credit" Header="Kredit" CanUserEdit="False"/>
+                            <tg:DataGridNumericalColumn PropertyName="ReceivedGrade" Header="Osztályzat"/>
+                            <tg:DataGridBooleanColumn PropertyName="Signature" Header="Teljesítve"/>
+                        </tg:RadDataGrid.Columns>
+                    </tg:RadDataGrid>
+                    
                 </Grid>
 
             </PivotItem>
@@ -92,9 +101,9 @@
                     Place your content here.
                     -->
 
-                    <telerikChart:RadCartesianChart x:Name="radChart">
+                    <telerikChart:RadCartesianChart x:Name="GradePerSemesterGrid">
                         <telerikChart:RadCartesianChart.HorizontalAxis>
-                            <telerikChart:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">
+                            <telerikChart:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" LabelFormat="{}{0}.félév">
                                 <telerikChart:CategoricalAxis.LineStyle>
                                     <Style TargetType="Line">
                                         <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
@@ -108,7 +117,7 @@
                             </telerikChart:CategoricalAxis>
                         </telerikChart:RadCartesianChart.HorizontalAxis>
                         <telerikChart:RadCartesianChart.VerticalAxis>
-                            <telerikChart:LinearAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" >
+                            <telerikChart:LinearAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" Title="Érdemjegy">
                                 <telerikChart:LinearAxis.LineStyle>
                                     <Style TargetType="Line">
                                         <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
@@ -121,7 +130,7 @@
                                 </telerikChart:LinearAxis.MajorTickStyle>
                             </telerikChart:LinearAxis>
                         </telerikChart:RadCartesianChart.VerticalAxis>
-                        <telerikChart:BarSeries ItemsSource="{x:Bind ViewModel.GradeSample}" ShowLabels="True">
+                        <telerikChart:BarSeries Name="ChartContent" ItemsSource="{x:Bind ViewModel.GradeSample}" ShowLabels="True">
                             <telerikChart:BarSeries.CategoryBinding>
                                 <telerikChart:PropertyNameDataPointBinding PropertyName="Semester" />
                             </telerikChart:BarSeries.CategoryBinding>

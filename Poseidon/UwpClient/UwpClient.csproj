@@ -125,6 +125,7 @@
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Models\DataPoint.cs" />
     <Compile Include="Models\SampleOrder.cs" />
+    <Compile Include="Models\SubjectAndGrade.cs" />
     <Compile Include="Models\SubjectDataPoint.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
