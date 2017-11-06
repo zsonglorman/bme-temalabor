@@ -34,11 +34,12 @@ function Submit() {
         url: "Subjects/Register",
         type: "POST",
         data: "id=" + id + "&sign=" + sign + "&mark=" + mark + "&semester=" + semester,
-        success: function (data) { $("#ResultMessage").text(data); },
+        success: function (data) {
+            $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
+                $("#SuccessModal").slideUp(200);
+            });},
         error: function (error) { }
     });
     $("#myModal").modal('hide');
-    $("#SuccessModal").fadeTo(800, 500).slideUp(500, function () {
-        $("#SuccessModal").slideUp(200);
-    });
+    
 }

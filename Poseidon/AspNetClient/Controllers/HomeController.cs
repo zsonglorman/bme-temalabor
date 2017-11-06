@@ -18,6 +18,7 @@ namespace AspNetClient.Controllers
             this.subjectManager = subjectManager; 
         }
 
+        [HttpGet]
         public IActionResult Modify(int? id)
         {
             foreach (SubjectWithGrade i in subjectManager.GetSubjectsWithGradesOfSemester(HomeViewModel.Semester))
@@ -50,6 +51,7 @@ namespace AspNetClient.Controllers
         public IActionResult Delete()
         {
             int id = int.Parse(Request.Form["id"]);
+            int studentId = int.Parse(Request.Form["studentId"]);
             bool sign = bool.Parse(Request.Form["sign"]);
             int mark = int.Parse(Request.Form["mark"]);
             int semester = int.Parse(Request.Form["semester"]);
@@ -57,14 +59,15 @@ namespace AspNetClient.Controllers
             bool passed = false;
             if ((int)mark > 1 && sign == true)
                 passed = true;
-            Grade grade = new Grade(1, id, semester, sign, passed, mark);
+            Grade grade = new Grade(studentId, id, semester, sign, passed, mark);
             subjectManager.DeleteGradeOfSubject(grade);
-            return null;
+            return Content("Success");
         }
         [HttpPost]
         public IActionResult Modify()
         {
             int id = int.Parse(Request.Form["id"]);
+            int studentId = int.Parse(Request.Form["studentId"]);
             bool sign = bool.Parse(Request.Form["sign"]);
             int mark = int.Parse(Request.Form["mark"]);
             int semester = int.Parse(Request.Form["semester"]);
@@ -72,10 +75,10 @@ namespace AspNetClient.Controllers
             bool passed = false;
             if ((int)mark > 1 && sign == true)
                 passed = true;
-            Grade grade = new Grade(1, id, semester, sign, passed, mark);
+            Grade grade = new Grade(studentId, id, semester, sign, passed, mark);
          
             subjectManager.UpdateGradeOfSubject(grade);
-            return null;
+            return Content("Success");
         }
     }
 }

@@ -56,9 +56,9 @@ namespace AspNetClient.Controllers
             bool passed = false;
             if ((int)mark > 1 && sign == true)
                 passed = true;
-            Grade grade = new Grade(1, id, semester, sign, passed, mark);
+            Grade grade = new Grade(2, id, semester, sign, passed, mark);
             subjectManager.InsertGradeOfSubject(grade);
-            return Content("Success");
+            return new EmptyResult();
         }
         
     }
