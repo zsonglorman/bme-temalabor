@@ -11,6 +11,19 @@ namespace AspNetClient.Models
         public IList<Interfaces.SubjectWithGrade> SubjectWithGrade { get; private set; }
         public static int Semester { get; set; }
 
+        public int numOfGrade(int grade)
+        {
+            int sum = 0;
+            foreach (SubjectWithGrade i in SubjectWithGrade)
+            {
+                if (i.Grade.ReceivedGrade == grade)
+                {
+                    sum++;
+                }
+
+            }
+            return sum;
+        }
         public HomeViewModel(List<SubjectWithGrade> subjectWithGrade, int semester)
         {
             if (subjectWithGrade != null)
