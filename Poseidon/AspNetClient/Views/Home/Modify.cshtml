@@ -4,22 +4,32 @@
 }
 
 <div style="padding: 10px">
-    <h2>Tárgynév: @Model.SubjectWithGrade.Subject.Name</h2>
-    <h3>Tárgykód: @Model.SubjectWithGrade.Subject.Code</h3>
-    <p>Kredit: @Model.SubjectWithGrade.Subject.Credit</p>
-    <p>Tárgyfelelős: @Model.SubjectWithGrade.Subject.ResponsibleProfessor</p>
-    <p>Ajánlott félév: @Model.SubjectWithGrade.Subject.RecommendedSemester</p>
-    <p>Teljesítés féléve: @Model.SubjectWithGrade.Grade.EnrollmentSemester</p>
-    <p class="hidden" id="id">@Model.SubjectWithGrade.Subject.Id</p>
-    <p class="hidden" id="studentId">@Model.SubjectWithGrade.Grade.StudentID</p>
-    <p class="hidden" id="semester">@Model.SubjectWithGrade.Grade.EnrollmentSemester</p>
-
-</div>
-<div class="modal-footer">
-    <div class="centered form-inline form-group" id="markForm">
-        <label>Aláírás: <input asp-for="SubjectWithGrade.Grade.Signature" id="sign" type="checkbox"></label>
-        <label>Érdemjegy: <input asp-for="SubjectWithGrade.Grade.ReceivedGrade" id="mark" type="number" class="form-control"></label>
+    <dl class="dl-horizontal">
+        <dt>Tárgynév:</dt>
+        <dd>@Model.SubjectWithGrade.Subject.Name</dd>
+        <dt>Tárgykód:</dt>
+        <dd>@Model.SubjectWithGrade.Subject.Code</dd>
+        <dt>Kredit:</dt>
+        <dd>@Model.SubjectWithGrade.Subject.Credit</dd>
+        <dt>Tárgyfelelős:</dt>
+        <dd>@Model.SubjectWithGrade.Subject.ResponsibleProfessor</dd>
+        <dt>Ajánlott félév:</dt>
+        <dd>@Model.SubjectWithGrade.Subject.RecommendedSemester</dd>
+        <dt>Teljesítés féléve:</dt>
+        <dd>@Model.SubjectWithGrade.Grade.EnrollmentSemester</dd>
+        <dd class="hidden" id="id">@Model.SubjectWithGrade.Subject.Id</>
+        <dd class="hidden" id="studentId">@Model.SubjectWithGrade.Grade.StudentID</dd>
+        <dd class="hidden" id="semester">@Model.SubjectWithGrade.Grade.EnrollmentSemester</dd>
+    </dl>
+    <div class="container-fluid">
+        <div class="text-center form-inline form-group" id="markForm">
+            <div class="col-xs-4 col-xs-offset-2">
+                <label>Aláírás: <input asp-for="SubjectWithGrade.Grade.Signature" id="sign" type="checkbox"></label>
+            </div>
+            <div class="col-xs-4">
+                <label>Érdemjegy: <input min="1" max="5" asp-for="SubjectWithGrade.Grade.ReceivedGrade" id="mark" type="number" class="form-control"></label>
+            </div>
+        </div>
     </div>
 </div>
-
 <script src="~/js/home-modify.js" type="text/javascript" language="javascript"></script>
