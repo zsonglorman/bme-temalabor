@@ -10,7 +10,7 @@ namespace AspNetClient.Models
     {
         public IList<Interfaces.SubjectWithGrade> SubjectWithGrade { get; private set; }
         public static int Semester { get; set; }
-
+        public int actualSemester { get; set; }
         public int numOfGrade(int grade)
         {
             int sum = 0;
@@ -31,6 +31,7 @@ namespace AspNetClient.Models
             else
                 SubjectWithGrade = new List<SubjectWithGrade>();
             Semester = semester;
+            actualSemester = Semester;
         }
     }
 }

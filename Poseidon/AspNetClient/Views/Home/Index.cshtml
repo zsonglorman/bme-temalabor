@@ -55,10 +55,24 @@
         </div>
         <div class="col-md-6">
             <h1>Diagrammok</h1>
-            <div id="canvas-holder" style="width:100%">
-                <canvas id="chart-area" />
+            <div class="col-xs-8 text-right">
+                <ul class="pagination">
+                    <li id="pie" class="active"><a onclick="changeChart('pie')">Kördiagam</a></li>
+                    <li id="vertical"><a onclick="changeChart('vertical')">Oszlopdiagram</a></li>
+                </ul>
             </div>
-        </div>
+            <div class="col-md-12 table-responsive">
+                <div id="pie-chart">
+                    <div id="canvas-holder" style="width:75%">
+                        <canvas id="chart-area" />
+                    </div>
+                </div>
+                <div id="vert-chart" hidden>
+                    <div id="container" style="width: 75%;">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -86,6 +100,8 @@
     <script src="~/js/statistics/chart.bundle.js"></script>
     <script src="~/js/statistics/piechart-util.js"></script>
     <script src="~/js/statistics/piechart.js"></script>
+    <script src="~/js/statistics/control.js"></script>
+    <script src="~/js/statistics/verticalchart.js"></script>
     <script>
         var config = {
             type: 'pie',
@@ -118,5 +134,25 @@
                 responsive: true
             }
         };
+
+        var barChartData = {
+            labels: ["1","2","3","4","5"],
+            datasets: [{
+                label: @Model.actualSemester + '. félév',
+                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                borderColor: window.chartColors.blue,
+                borderWidth: 1,
+                data: [
+                     @for(int i =1;i<6;i++)
+                        {
+                            @Model.numOfGrade(i);<text>,</text>
+                        }
+                ]
+            }]
+
+        };
     </script>
+
+
+
 }
