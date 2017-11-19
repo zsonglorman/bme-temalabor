@@ -34,7 +34,16 @@
                     </h1>
                 </div>
                 <div class="panel-body">
-
+                    <dl class="dl-horizontal">
+                        <dt>Összes kredit:</dt>
+                        <dd>@Model.AllCredits</dd>
+                        <dt>Teljesített kredit:</dt>
+                        <dd>@Model.EarnedCredits</dd>
+                        <dt>Súlyozott átlag:</dt>
+                        <dd>@Model.WeightedAverage</dd>
+                        <dt>Ösztöndíjindex:</dt>
+                        <dd>@Model.ScholarshipAverage</dd>
+                    </dl>
                 </div>
                 <div class="panel-heading">
                     <h1>Félév tárgyai</h1>
