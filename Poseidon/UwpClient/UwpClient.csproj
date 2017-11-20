@@ -138,6 +138,7 @@
     <Compile Include="ViewModels\DetailsViewModel.cs" />
     <Compile Include="ViewModels\EnrollableSubjectsPageViewModel.cs" />
     <Compile Include="ViewModels\EnrolledSubjectsPageViewModel.cs" />
+    <Compile Include="ViewModels\OwnCommitEditCommand.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellNavigationItem.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />

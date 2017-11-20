@@ -38,7 +38,7 @@
                     <ListViewItem Content="Location"/>
                     <ListViewItem Content="Schedule"/>
                     <ListViewItem Content="Length in minutes"/>
-                    <ListViewItem Content="Couurse type"/>
+                    <ListViewItem Content="Course type"/>
                 </ListView.Items>
             </ListView>
                <StackPanel Grid.Column="1">

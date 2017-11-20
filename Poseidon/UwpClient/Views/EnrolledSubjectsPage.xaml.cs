@@ -26,12 +26,14 @@ namespace UwpClient.Views
             InitializeComponent();
         }
 
-        public Subject row;
+        public SubjectAndGrade row;
+        //public Subject row;
         private void EnrolledGrid_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             var physicalPoint = e.GetCurrentPoint(sender as RadDataGrid);
             var point = new Point { X = physicalPoint.Position.X, Y = physicalPoint.Position.Y };
-            row = (Subject)(sender as RadDataGrid).HitTestService.RowItemFromPoint(point);
+            row = (SubjectAndGrade)(sender as RadDataGrid).HitTestService.RowItemFromPoint(point);
+            //row = (Subject)(sender as RadDataGrid).HitTestService.RowItemFromPoint(point);
             var cell = (sender as RadDataGrid).HitTestService.CellInfoFromPoint(point);
         }
 
@@ -80,7 +82,7 @@ namespace UwpClient.Views
             {
                 Title = "Biztosan törlöd ezt a tárgyat?",
                 Content = string.Format("Tárgy név: {0} \nTárgykód: {1} \n" +
-                                       "Kredit: {2} \nTárgyfelelős: {3} \n",
+                                       "Kredit: {2} \nTárgyfelelős: {3} \n" ,
                                        row.Name, row.Code, row.Credit, row.ResponsibleProfessor),
                 CloseButtonText = "Nem, mégse",
                 PrimaryButtonText = "Igen, törlöm"
@@ -90,8 +92,16 @@ namespace UwpClient.Views
 
             if(result == ContentDialogResult.Primary)
             {
-                ViewModel.subjectSource.Remove(row);
+                // a lokális kollekcióból kitörli az adott sort
+                //Subject torlendoSubject = new Subject(row.SubjectID, row.Name, row.Code, row.Credit, row.RecommendedSemester, row.ResponsibleProfessor);
+                //ViewModel.subjectSource.Remove(torlendoSubject);
+                ViewModel.SubjectAndGradeSource.Remove(row);
+                //ViewModel.subjectSource.Remove(row);
                 EnrolledGrid.UpdateLayout();
+                ////adatbázisból is eltávolítjuk a sort
+                Grade torlendoGrade = new Grade(row.StudentID,row.SubjectID,row.EnrollmentSemester,row.Signature,row.Passed,row.ReceivedGrade);
+                ////törlés működik adatbázisból viszont kommentezem mert akkor újra kell mindig tölteni az adatokat
+                //SubjectService.DeleteGradeFromDatabase(torlendoGrade);
             }
         }
 

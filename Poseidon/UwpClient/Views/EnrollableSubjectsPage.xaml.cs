@@ -61,8 +61,10 @@ namespace UwpClient.Views
 
             if (result == ContentDialogResult.Primary)
             {
+               
                 //Ha felvételt nyom a felvehetők közül kitörölni, a felvettek közé berakni (másik ViewModel)
                 biztosfelveszi = true;
+
                 ViewModel.SubjectSource.Remove(row);
                 EnrollableGrid.UpdateLayout();
 

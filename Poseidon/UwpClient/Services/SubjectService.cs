@@ -143,5 +143,32 @@ namespace UwpClient.Services
 
             return new ObservableCollection<SubjectDataPoint>(data);
         }
+
+        public static void InsertGradeToDatabase(Grade grade)
+        {
+            Mocks.Factory.SubjectManagerFactory.Mocking = false;
+
+            Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
+
+            subjectManager.InsertGradeOfSubject(grade);
+        }
+
+        public static void UpdateGradeToDatabase(Grade grade)
+        {
+            Mocks.Factory.SubjectManagerFactory.Mocking = false;
+
+            Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
+
+            subjectManager.UpdateGradeOfSubject(grade);
+        }
+
+        public static void DeleteGradeFromDatabase(Grade grade)
+        {
+            Mocks.Factory.SubjectManagerFactory.Mocking = false;
+
+            Interfaces.ISubjectManager subjectManager = Mocks.Factory.SubjectManagerFactory.GetSubjectManager();
+
+            subjectManager.DeleteGradeOfSubject(grade);
+        }
     }
 }

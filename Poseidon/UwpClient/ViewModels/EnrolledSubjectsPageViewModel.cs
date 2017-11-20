@@ -15,6 +15,10 @@ namespace UwpClient.ViewModels
         public EnrolledSubjectsPageViewModel()
         {
             subjectSource = SubjectService.GetGridSubjectData();
+
+            subjectWithGradeSource = SubjectService.GetSubjectsBySemester(1);
+
+            subjectAndGradeSouce = SubjectService.GetTabbedPage(subjectWithGradeSource);
         }
 
         public ObservableCollection<Subject> subjectSource;
@@ -25,6 +29,26 @@ namespace UwpClient.ViewModels
             {
                 return subjectSource;
                 //return SubjectService.GetGridSubjectData();
+            }
+        }
+
+        public ObservableCollection<SubjectWithGrade> subjectWithGradeSource;
+
+        public ObservableCollection<SubjectWithGrade> SubjectWithGrade
+        {
+            get
+            {
+                return subjectWithGradeSource;
+            }
+        }
+
+        public ObservableCollection<SubjectAndGrade> subjectAndGradeSouce;
+
+        public ObservableCollection<SubjectAndGrade> SubjectAndGradeSource
+        {
+            get
+            {
+                return subjectAndGradeSouce;
             }
         }
 

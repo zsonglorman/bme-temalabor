@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Interfaces;
+using System;
+using Telerik.UI.Xaml.Controls.Grid;
+using Telerik.UI.Xaml.Controls.Grid.Commands;
+using UwpClient.Models;
 using UwpClient.Services;
 using UwpClient.ViewModels;
-
-
+using Windows.Foundation;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace UwpClient.Views
 {
@@ -105,6 +109,25 @@ namespace UwpClient.Views
                 ChartContent.InvalidateArrange();
                 ChartContent.UpdateLayout();
             }
+        }
+
+        public SubjectAndGrade row;
+        private void SubjectPerSemesterGrid_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            var physicalPoint = e.GetCurrentPoint(sender as RadDataGrid);
+            var point = new Point { X = physicalPoint.Position.X, Y = physicalPoint.Position.Y };
+            row = (SubjectAndGrade)(sender as RadDataGrid).HitTestService.RowItemFromPoint(point);
+            var cell = (sender as RadDataGrid).HitTestService.CellInfoFromPoint(point);
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            foreach (var item in ViewModel.subjectAndGradeSource)
+            {
+                Grade updatelendograde = new Grade(item.StudentID, item.SubjectID,item.EnrollmentSemester, item.Signature, item.Passed, item.ReceivedGrade);
+                SubjectService.UpdateGradeToDatabase(updatelendograde);
+            }
+            base.OnNavigatingFrom(e);
         }
     }
 }

@@ -168,9 +168,9 @@ namespace UwpClient.ViewModels
             // Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/master/docs/projectTypes/navigationpane.md
             // Edit String/en-US/Resources.resw: Add a menu item title for each page
             _primaryItems.Add(new ShellNavigationItem("Shell_StartPage".GetLocalized(), Symbol.Home, typeof(StartPageViewModel).FullName));
-            _primaryItems.Add(new ShellNavigationItem("Shell_EnrolledSubjectsPage".GetLocalized(), Symbol.Document, typeof(EnrolledSubjectsPageViewModel).FullName));
-            _primaryItems.Add(new ShellNavigationItem("Shell_EnrollableSubjectsPage".GetLocalized(), Symbol.Document, typeof(EnrollableSubjectsPageViewModel).FullName));
-            _primaryItems.Add(new ShellNavigationItem("Shell_Chart".GetLocalized(), Symbol.Document, typeof(ChartViewModel).FullName));
+            _primaryItems.Add(new ShellNavigationItem("Shell_EnrolledSubjectsPage".GetLocalized(), Symbol.Accept, typeof(EnrolledSubjectsPageViewModel).FullName));
+            _primaryItems.Add(new ShellNavigationItem("Shell_EnrollableSubjectsPage".GetLocalized(), Symbol.Add, typeof(EnrollableSubjectsPageViewModel).FullName));
+            _primaryItems.Add(new ShellNavigationItem("Shell_Chart".GetLocalized(), Symbol.TwoBars, typeof(ChartViewModel).FullName));
             _primaryItems.Add(new ShellNavigationItem("Shell_Tabbed".GetLocalized(), Symbol.Document, typeof(TabbedViewModel).FullName));
             _secondaryItems.Add(new ShellNavigationItem("Shell_ContactsPage".GetLocalized(), Symbol.ContactInfo, typeof(ContactsPageViewModel).FullName));
             _secondaryItems.Add(new ShellNavigationItem("Shell_Settings".GetLocalized(), Symbol.Setting, typeof(SettingsViewModel).FullName));

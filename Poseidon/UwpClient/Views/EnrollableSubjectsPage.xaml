@@ -30,7 +30,7 @@
                             ColumnResizeHandleDisplayMode="Always" CanUserChooseColumns="True" PointerMoved="grid_PointerMoved"> -->
 
             <tg:RadDataGrid Name="EnrollableGrid" ColumnDataOperationsMode="Flyout" AutoGenerateColumns="False" ItemsSource="{x:Bind ViewModel.SubjectSource}"
-                             PointerMoved="grid_PointerMoved">
+                             PointerMoved="grid_PointerMoved" GridLinesVisibility="None">
                 <tg:RadDataGrid.Columns>
                     <tg:DataGridNumericalColumn PropertyName="Id" Header="ID" ></tg:DataGridNumericalColumn>
                     <tg:DataGridTextColumn PropertyName="Name" Header="Tárgynév"></tg:DataGridTextColumn>
