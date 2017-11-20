@@ -1,6 +1,7 @@
 ﻿using Interfaces;
 using System;
 using Telerik.UI.Xaml.Controls.Grid;
+using UwpClient.Models;
 using UwpClient.ViewModels;
 using Windows.Foundation;
 using Windows.UI.Xaml.Controls;
@@ -22,13 +23,15 @@ namespace UwpClient.Views
             InitializeComponent();
         }
 
-        public Subject row;
+        //public Subject row;
+        public SubjectAndGrade row;
 
         private void grid_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             var physicalPoint = e.GetCurrentPoint(sender as RadDataGrid);
             var point = new Point { X = physicalPoint.Position.X, Y = physicalPoint.Position.Y };
-            row = (Subject) (sender as RadDataGrid).HitTestService.RowItemFromPoint(point);
+            //row = (Subject) (sender as RadDataGrid).HitTestService.RowItemFromPoint(point);
+            row = (SubjectAndGrade)(sender as RadDataGrid).HitTestService.RowItemFromPoint(point);
             var cell = (sender as RadDataGrid).HitTestService.CellInfoFromPoint(point);
         }
 
@@ -43,8 +46,7 @@ namespace UwpClient.Views
             EnrollSubjectDialog();
             //this.Frame.Navigate(typeof(EnrolledSubjectsPagePage), row);
         }
-        private bool biztosfelveszi = false;
-        
+
         private async void EnrollSubjectDialog()
         {
             ContentDialog enrollSubjectDialog = new ContentDialog
@@ -61,14 +63,12 @@ namespace UwpClient.Views
 
             if (result == ContentDialogResult.Primary)
             {
-               
-                //Ha felvételt nyom a felvehetők közül kitörölni, a felvettek közé berakni (másik ViewModel)
-                biztosfelveszi = true;
-
-                ViewModel.SubjectSource.Remove(row);
+                //Ha felvételt nyom a felvehetők közül kitörölni, a felvettek közé berakni (másik ViewModel
+                ViewModel.subjectAndGradeSource.Remove(row);
+                //ViewModel.SubjectSource.Remove(row);
                 EnrollableGrid.UpdateLayout();
 
-
+                this.Frame.Navigate(typeof(EnrolledSubjectsPagePage), row);
             }
         }
     }

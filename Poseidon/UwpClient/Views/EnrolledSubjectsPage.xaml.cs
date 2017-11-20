@@ -105,28 +105,36 @@ namespace UwpClient.Views
             }
         }
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    var parameters = e.Parameter as Subject;
-        //    //int id = parameters.Id;
-        //    //String name = parameters.Name;
-        //    //String code = parameters.Code;
-        //    //int credit = parameters.Credit;
-        //    //int recommendedsemester = parameters.RecommendedSemester;
-        //    //String responsibleprof = parameters.ResponsibleProfessor;
+        private void Refresh_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            EnrolledGrid.ItemsSource = SubjectService.GetTabbedPage(SubjectService.GetSubjectsBySemester(1));
+        }
 
-        //    bool unique = true;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var parameters = e.Parameter as SubjectAndGrade;
+            if (parameters != null)
+            {
+                int id = parameters.Id;
+                String name = parameters.Name;
+                String code = parameters.Code;
+                int credit = parameters.Credit;
+                int recommendedsemester = parameters.RecommendedSemester;
+                String responsibleprof = parameters.ResponsibleProfessor;
+            }
 
-        //    //Kell hogy 1 évbe csak egyszer lehessen felvenni 1 tárgyat
-        //    /*foreach (var item in ViewModel.SubjectSource)
-        //    {
-        //        if(id == item.Id)
-        //        {
-        //            unique = false;
-        //        }
-        //    }*/
+            bool unique = true;
 
-        //    if (unique == true) { ViewModel.subjectSource.Add(parameters); }
-        //}
+            //Kell hogy 1 évbe csak egyszer lehessen felvenni 1 tárgyat
+            /*foreach (var item in ViewModel.SubjectSource)
+            {
+                if(id == item.Id)
+                {
+                    unique = false;
+                }
+            }*/
+
+            if (unique == true && parameters != null) { ViewModel.subjectAndGradeSouce.Add(parameters); }
+        }
     }
 }

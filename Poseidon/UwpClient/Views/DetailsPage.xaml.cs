@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpClient.Models;
 using UwpClient.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -39,7 +40,7 @@ namespace UwpClient.Views
         //public Subject parameters;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var parameters = e.Parameter as Subject;
+            var parameters = e.Parameter as SubjectAndGrade;
             int id = parameters.Id;
             String name = parameters.Name;
             String code = parameters.Code;

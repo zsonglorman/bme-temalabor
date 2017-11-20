@@ -23,6 +23,8 @@
             FontSize="28" FontWeight="SemiLight" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" VerticalAlignment="Center"
             Margin="0,0,12,7"/>
 
+        <Button Name="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Frissítés" Click="Refresh_Click"></Button>
+        
         <Grid
             Grid.Row="1"
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
