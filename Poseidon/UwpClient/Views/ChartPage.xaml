@@ -22,9 +22,9 @@
             Style="{StaticResource PageTitleStyle}" />
 
         <Grid Grid.Row="1" Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <tc:RadCartesianChart>
+            <tc:RadCartesianChart Name="CredtiPerSemesterChart">
                 <tc:RadCartesianChart.HorizontalAxis>
-                    <tc:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">
+                    <tc:CategoricalAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" LabelFormat="{}{0}.félév">
                         <tc:CategoricalAxis.LineStyle>
                             <Style TargetType="Line">
                                 <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
@@ -38,7 +38,21 @@
                     </tc:CategoricalAxis>
                 </tc:RadCartesianChart.HorizontalAxis>
                 <tc:RadCartesianChart.VerticalAxis>
-                    <tc:LinearAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">
+                    <tc:LinearAxis Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" Title="Kredit">
+                       <!-- <tc:LinearAxis.TitleTemplate>
+                            <DataTemplate>
+                                <Style x:Name="owntitlestyle" TargetType="tc:LinearAxis">
+                                    <Setter Property="Title">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Offset="0.3" Color="Transparent" />
+                                                <GradientStop Offset="0.7" Color="Orange" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataTemplate>
+                        </tc:LinearAxis.TitleTemplate> -->
                         <tc:LinearAxis.LineStyle>
                             <Style TargetType="Line">
                                 <Setter Property="Stroke" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>

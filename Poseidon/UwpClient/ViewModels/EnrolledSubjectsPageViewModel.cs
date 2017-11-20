@@ -6,17 +6,27 @@ using GalaSoft.MvvmLight;
 using UwpClient.Services;
 using Mocks;
 using Interfaces;
+using UwpClient.Models;
 
 namespace UwpClient.ViewModels
 {
     public class EnrolledSubjectsPageViewModel : ViewModelBase
     {
-        public ObservableCollection<Subject> Source
+        public EnrolledSubjectsPageViewModel()
+        {
+            subjectSource = SubjectService.GetGridSubjectData();
+        }
+
+        public ObservableCollection<Subject> subjectSource;
+
+        public ObservableCollection<Subject> SubjectSource
         {
             get
             {
-                return SubjectService.GetGridSubjectData();
+                return subjectSource;
+                //return SubjectService.GetGridSubjectData();
             }
         }
+
     }
 }

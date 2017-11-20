@@ -11,46 +11,73 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 border-right">
-            <h1 class="col-xs-4">Félévek</h1>
-            <div class="col-xs-8 text-right">
-                <ul class="pagination">
-                    <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="1"><a asp-action="Index" asp-route-id="1">1</a></li>
-                    <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="2"><a asp-action="Index" asp-route-id="2">2</a></li>
-                    <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="3"><a asp-action="Index" asp-route-id="3">3</a></li>
-                    <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="4"><a asp-action="Index" asp-route-id="4">4</a></li>
-                    <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="5"><a asp-action="Index" asp-route-id="5">5</a></li>
-                    <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="6"><a asp-action="Index" asp-route-id="6">6</a></li>
-                    <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="7"><a asp-action="Index" asp-route-id="7">7</a></li>
-                </ul>
-            </div>
-            <div class="col-md-12 table-responsive">
-                <table class="table table-bordered table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Tárgynév</th>
-                            <th>Kredit</th>
-                            <th>Aláírás</th>
-                            <th>Érdemjegy</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model.SubjectWithGrade != null)
-                        {
-                            @foreach (var i in Model.SubjectWithGrade)
-                            {
+        <div class="col-lg-6 border-right">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>
+                        Félév adatai
+                        <div class="dropdown pull-right">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Félév kiválasztása
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="1"><a asp-action="Index" asp-route-id="1">1. félév</a></li>
+                                <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="2"><a asp-action="Index" asp-route-id="2">2. félév</a></li>
+                                <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="3"><a asp-action="Index" asp-route-id="3">3. félév</a></li>
+                                <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="4"><a asp-action="Index" asp-route-id="4">4. félév</a></li>
+                                <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="5"><a asp-action="Index" asp-route-id="5">5. félév</a></li>
+                                <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="6"><a asp-action="Index" asp-route-id="6">6. félév</a></li>
+                                <li is-active-route asp-controller="Home" asp-action="Index" asp-route-id="7"><a asp-action="Index" asp-route-id="7">7. félév</a></li>
+                            </ul>
+                        </div>
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>Összes kredit:</dt>
+                        <dd>@Model.AllCredits</dd>
+                        <dt>Teljesített kredit:</dt>
+                        <dd>@Model.EarnedCredits</dd>
+                        <dt>Súlyozott átlag:</dt>
+                        <dd>@Model.WeightedAverage</dd>
+                        <dt>Ösztöndíjindex:</dt>
+                        <dd>@Model.ScholarshipAverage</dd>
+                    </dl>
+                </div>
+                <div class="panel-heading">
+                    <h1>Félév tárgyai</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tárgynév</th>
+                                    <th>Kredit</th>
+                                    <th>Aláírás</th>
+                                    <th>Érdemjegy</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.SubjectWithGrade != null)
+                                {
+                                @foreach (var i in Model.SubjectWithGrade)
+                                {
                                 <tr>
                                     <td>@i.Subject.Name</td>
                                     <td>@i.Subject.Credit</td>
                                     <td>@i.Grade.Signature</td>
                                     <td>@i.Grade.ReceivedGrade</td>
-                                    <td class="text-center"><a onclick="getPartialView(@i.Subject.Id,&quot;@Html.Raw(Url.Action("Modify", "Home", new { }))&quot;)" class="btn btn-sm btn-success">Módosítás</a></td>
+                                    <td class="text-center"><a onclick="getPartialView(@i.Subject.Id,&quot;@Html.Raw(Url.Action(" Modify", "Home" , new { }))&quot;)" class="btn btn-sm btn-success">Módosítás</a></td>
                                 </tr>
-                            }
-                        }
-                    </tbody>
-                </table>
+                                }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
@@ -73,35 +100,34 @@
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title">Módosítás</h2>
-                </div>
-                <div id="SubjectModify">
-                </div>
-                <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Submit(&quot;@Html.Raw(Url.Action("Modify", "Home", new { }))&quot;)">Módosítás</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Delete(&quot;@Html.Raw(Url.Action("Delete", "Home", new { }))&quot;)">Törlés</button>
-                </div>
-            </div>
-
         </div>
-    </div>
-</div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
-@section Scripts{
-    <script src="~/js/home-index.js" type="text/javascript" language="javascript"></script>
-    <script src="~/js/statistics/chart.bundle.js"></script>
-    <script src="~/js/statistics/piechart-util.js"></script>
-    <script src="~/js/statistics/control.js"></script>
-    <script src="~/js/statistics/chart-custom.js"></script>
-    <script>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title">Módosítás</h2>
+                    </div>
+                    <div id="SubjectModify">
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Submit(&quot;@Html.Raw(Url.Action(" Modify", "Home" , new { }))&quot;)">Módosítás</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Delete(&quot;@Html.Raw(Url.Action(" Delete", "Home" , new { }))&quot;)">Törlés</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @section Scripts{
+        <script src="~/js/home-index.js" type="text/javascript" language="javascript"></script>
+        <script src="~/js/statistics/chart.bundle.js"></script>
+        <script src="~/js/statistics/piechart-util.js"></script>
+        <script src="~/js/statistics/control.js"></script>
+        <script src="~/js/statistics/chart-custom.js"></script>
+        <script>
         var config = {
             type: 'pie',
             data: {
@@ -150,8 +176,8 @@
             }]
 
         };
-    </script>
+        </script>
 
 
 
-}
+        }

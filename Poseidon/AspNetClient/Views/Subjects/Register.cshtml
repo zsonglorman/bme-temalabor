@@ -5,17 +5,30 @@
 
 <p id="id" hidden>@Model.subject.Id</p>
 <div style="padding: 10px">
-    <h2>Tárgynév: @Model.subject.Name</h2>
-    <h3>Tárgykód: @Model.subject.Code</h3>
-    <p>Kredit: @Model.subject.Credit</p>
-    <p>Tárgyfelelős: @Model.subject.ResponsibleProfessor</p>
-    <p>Ajánlott félév: @Model.subject.RecommendedSemester</p>
-
-    <div class="modal-footer">
-        <div class="centered form-inline form-group" id="markForm">
-            <label>Aláírás: <input id="sign" type="checkbox"></label>
-            <label>Érdemjegy: <input id="mark" type="number" class="form-control"></label>
-            <label>Félév: <input id="semester" type="number" class="form-control"></label>
+    <dl class="dl-horizontal">
+        <dt>Tárgynév:</dt>
+        <dd>@Model.subject.Name</dd>
+        <dt>Tárgykód:</dt>
+        <dd>@Model.subject.Code</dd>
+        <dt>Kredit:</dt>
+        <dd>@Model.subject.Credit</dd>
+        <dt>Tárgyfelelős:</dt>
+        <dd>@Model.subject.ResponsibleProfessor</dd>
+        <dt>Ajánlott félév:</dt>
+        <dd>@Model.subject.RecommendedSemester</dd>
+    </dl>
+    
+    <div class="container-fluid">
+        <div class="form-inline form-group text-center" id="markForm">
+            <div class="col-xs-4">
+                <label>Aláírás: <input id="sign" type="checkbox"></label>
+            </div>
+            <div class="col-xs-4">
+                <label>Érdemjegy: <input min="1" max="5" id="mark" type="number" class="form-control"></label>
+            </div>
+            <div class="col-xs-4">
+                <label>Félév: <input min="1" max="12" id="semester" type="number" class="form-control"></label>
+            </div>
         </div>
     </div>
 </div>

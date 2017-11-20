@@ -12,15 +12,29 @@ namespace UwpClient.ViewModels
     {
         public TabbedViewModel()
         {
+            subjectWithGradeSource = SubjectService.GetSubjectsBySemester(1);
         }
 
-        public ObservableCollection<SubjectWithGrade> GradeSource
+        ObservableCollection<SubjectWithGrade> subjectWithGradeSource;
+
+        public ObservableCollection<SubjectWithGrade> SubjectWithGradeSource
         {
             get
             {
-                return SubjectService.GetSubjectsBySemester(1);
+                return subjectWithGradeSource;
+                //return SubjectService.GetSubjectsBySemester(1);
             }
         }
+
+        public ObservableCollection<SubjectAndGrade> SubjectAndGradeSource
+        {
+            get
+            {
+                return SubjectService.GetTabbedPage(subjectWithGradeSource);
+            }
+        }
+
+        
 
         public ObservableCollection<SubjectDataPoint> GradeSample
         {
