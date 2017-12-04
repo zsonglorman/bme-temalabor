@@ -5,6 +5,7 @@ using UwpClient.Models;
 using System.Collections.ObjectModel;
 using UwpClient.Services;
 using Interfaces;
+using Telerik.UI.Xaml.Controls.Grid.Commands;
 
 namespace UwpClient.ViewModels
 {
@@ -13,6 +14,8 @@ namespace UwpClient.ViewModels
         public TabbedViewModel()
         {
             subjectWithGradeSource = SubjectService.GetSubjectsBySemester(1);
+
+            subjectAndGradeSource = SubjectService.GetTabbedPage(subjectWithGradeSource);
         }
 
         ObservableCollection<SubjectWithGrade> subjectWithGradeSource;
@@ -26,15 +29,15 @@ namespace UwpClient.ViewModels
             }
         }
 
+        public ObservableCollection<SubjectAndGrade> subjectAndGradeSource;
+
         public ObservableCollection<SubjectAndGrade> SubjectAndGradeSource
         {
             get
             {
-                return SubjectService.GetTabbedPage(subjectWithGradeSource);
+                return subjectAndGradeSource;
             }
         }
-
-        
 
         public ObservableCollection<SubjectDataPoint> GradeSample
         {
@@ -44,6 +47,5 @@ namespace UwpClient.ViewModels
                 return SubjectService.TabChartSample(1);
             }
         }
-
     }
 }

@@ -138,11 +138,11 @@
     <comment>Page title for Tabbed</comment>
   </data>
   <data name="Tabbed_PivotItem1.Header" xml:space="preserve">
-    <value>Fül 1</value>
+    <value>Adott félév</value>
     <comment>First Pivot item title for Tabbed</comment>
   </data>
   <data name="Tabbed_PivotItem2.Header" xml:space="preserve">
-    <value>Fül 2</value>
+    <value>Statisztika</value>
     <comment>Second Pivot item title for Tabbed</comment>
   </data>
   <data name="ContactsPage_Title.Text" xml:space="preserve">

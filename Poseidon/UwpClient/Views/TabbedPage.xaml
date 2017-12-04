@@ -7,6 +7,8 @@
     xmlns:controls="using:MyToolkit.Controls"
     xmlns:tg="using:Telerik.UI.Xaml.Controls.Grid"
     xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:gridCommands="using:Telerik.UI.Xaml.Controls.Grid.Commands"
+    xmlns:local="using:UwpClient.ViewModels"
     DataContext="{Binding TabbedViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
@@ -81,13 +83,18 @@
                         </controls:DataGrid.ItemDetailsTemplate>
                     </controls:DataGrid>-->
 
-                    <tg:RadDataGrid Name="SubjectPerSemesterGrid" UserEditMode="Inline" ItemsSource="{x:Bind ViewModel.SubjectAndGradeSource}" AutoGenerateColumns="False" ColumnDataOperationsMode="Flyout" ColumnResizeHandleDisplayMode="Always">
+                    <tg:RadDataGrid Name="SubjectPerSemesterGrid" UserEditMode="Inline" ItemsSource="{x:Bind ViewModel.SubjectAndGradeSource}"
+                                    AutoGenerateColumns="False" ColumnDataOperationsMode="Flyout" ColumnResizeHandleDisplayMode="Always" GridLinesVisibility="None"
+                                    PointerMoved="SubjectPerSemesterGrid_PointerMoved" RowBackground="White">
                         <tg:RadDataGrid.Columns>
                             <tg:DataGridTextColumn PropertyName="Name" Header="Tárgynév" CanUserEdit="False"/>
                             <tg:DataGridNumericalColumn PropertyName="Credit" Header="Kredit" CanUserEdit="False"/>
-                            <tg:DataGridNumericalColumn PropertyName="ReceivedGrade" Header="Osztályzat"/>
-                            <tg:DataGridBooleanColumn PropertyName="Signature" Header="Teljesítve"/>
+                            <tg:DataGridNumericalColumn PropertyName="ReceivedGrade" Header="Osztályzat" CanUserEdit="True"/>
+                            <tg:DataGridBooleanColumn PropertyName="Signature" Header="Teljesítve" CanUserEdit="True"/>
                         </tg:RadDataGrid.Columns>
+                        <tg:RadDataGrid.Commands>
+                            <local:OwnCommitEditCommand/>
+                        </tg:RadDataGrid.Commands>
                     </tg:RadDataGrid>
                     
                 </Grid>
