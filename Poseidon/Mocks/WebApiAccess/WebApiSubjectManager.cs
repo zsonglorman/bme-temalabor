@@ -13,7 +13,12 @@ namespace Mocks.Factory
     {
         private static readonly HttpClient Client = new HttpClient();
 
-        private const string ApiBaseAddress = "http://localhost:10102/";
+        private static readonly string ApiUsername = "robot-poseidon";
+
+        private static readonly string ApiPassword = "ZW42FHypRynJa";
+
+
+        private const string ApiBaseAddress = "http://localhost:58908/";
 
         /// <summary>
         /// Get all subjects (without grades).
@@ -28,6 +33,12 @@ namespace Mocks.Factory
 
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
 
             var response = Client.GetAsync("api/Subject").Result;
             var stringData = response.Content.ReadAsStringAsync().Result;
@@ -51,6 +62,13 @@ namespace Mocks.Factory
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            // use Basic authentication       
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
+
             var response = Client.GetAsync("api/Subject/" + keyword).Result;
             var stringData = response.Content.ReadAsStringAsync().Result;
             var data = JsonConvert.DeserializeObject<List<Subject>>(stringData);
@@ -72,6 +90,12 @@ namespace Mocks.Factory
 
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
 
             var response = Client.GetAsync("api/Course/" + subjectId).Result;
             var stringData = response.Content.ReadAsStringAsync().Result;
@@ -95,6 +119,12 @@ namespace Mocks.Factory
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
+
             var response = Client.GetAsync("api/Grade/" + semester).Result;
             var stringData = response.Content.ReadAsStringAsync().Result;
             var data = JsonConvert.DeserializeObject<List<SubjectWithGrade>>(stringData);
@@ -115,6 +145,12 @@ namespace Mocks.Factory
 
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
 
             var response = Client.PostAsync("api/Grade/", new StringContent(JsonConvert.SerializeObject(grade), Encoding.UTF8, "application/json")).Result;
             
@@ -138,6 +174,12 @@ namespace Mocks.Factory
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
+
             var response = Client.PutAsync("api/Grade/", new StringContent(JsonConvert.SerializeObject(grade), Encoding.UTF8, "application/json")).Result;
 
             if (response.IsSuccessStatusCode)
@@ -159,6 +201,12 @@ namespace Mocks.Factory
 
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
 
             var response = Client.DeleteAsync(string.Format("api/Grade/{0}/{1}/{2}", grade.StudentID, grade.SubjectID, grade.EnrollmentSemester)).Result;
 
@@ -192,11 +240,24 @@ namespace Mocks.Factory
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            if (Client.DefaultRequestHeaders.Authorization == null)
+            {
+                // use Basic authentication       
+                SetAuthorization();
+            }
+
             var response = Client.GetAsync("api/Grade/?subjectId=" + subjectId).Result;
             var stringData = response.Content.ReadAsStringAsync().Result;
             var data = JsonConvert.DeserializeObject<List<Grade>>(stringData);
 
             return data;
+        }
+
+        private void SetAuthorization()
+        {
+            // use Basic authentication       
+            var credentials = Convert.ToBase64String(Encoding.GetEncoding("iso-8859-1").GetBytes(string.Format("{0}:{1}", ApiUsername, ApiPassword)));
+            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);            
         }
     }
 }

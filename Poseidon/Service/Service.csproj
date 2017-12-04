@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Authentication\AddChallengeOnUnauthorizedResult.cs" />
+    <Compile Remove="Authentication\AuthenticationFailureResult.cs" />
+    <Compile Remove="Authentication\BasicAuthentication.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

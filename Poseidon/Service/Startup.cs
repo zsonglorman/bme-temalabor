@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service.Data;
 using Microsoft.EntityFrameworkCore;
+using Service.Authentication;
 
 namespace Service
 {
@@ -32,6 +33,8 @@ namespace Service
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<BasicAuthenticationMiddleware>();
 
             app.UseMvc();
         }
